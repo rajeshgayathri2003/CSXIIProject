@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Website</title>
+    <style> *{padding:0; margin:0;box-sizing: border-box;}
+            body {background-color: MediumSeaGreen; background-size:cover; position:center;
+            font-family:sans-serif;}
+.menu-bar{background: black; text-align: center;}
+.menu-bar ul{ display: inline-flex; color:#fff; list-style:none;}
+.menu-bar ul li{ width:120px; margin:15 px; padding:15 px;}
+.menu-bar ul li a{ text-decoration: none; color:white;}
+.active, .menu-bar ul li:hover, .sub-menu-1:hover .drop-down
+{background: grey;
+ border-radius: 3px;}
+ .sub-menu-1{display: none;}
+ .sub-menu-1 a{display: block; color: black;}
+ .sub-menu-1 a:hover{background:grey;}
+.menu-bar:hover .sub-menu-1{display:block; position:absolute; background-color:black; margin-top:15px; margin-left: 15px;}
+ .menu-bar:hover .sub-menu-1 ul {display:block; margin:10px;}
+ .box { text-align:center; background-color: black; width:600px;height: 350px; margin:150px, padding:100px; float: right; display:block;position: relative; top:30px; right:30px; bottom:30px;}
+ .image{float: left; width:663 px; height:300px;}
+ .title{ text-align: center; color: white; font-size:48px;}
+ .tag-line{ text-align: center; color: white; font-size: 36px; font-style:italic;}
+ div.gallery{ width:100%; height: auto; position:relative; top:30px; left: 30px;}
+.forms{float:right; width:50%; height:150px;}
+ input[type="text"]{ padding:50px,50px; margin:8px,0; box-sizing:border-box;color:white; border:10px grey; border-radius: 10px;}
+.grid-container{ display:grid; background-color:black; padding:10px; width:599px;height:200px;float:right;position:relative;top:0px; right: 30px;object-fit: fill;}
+.button{ background-color:grey; color: black;padding: 15px,32px; text-decoration:none; display: inline-block; font-size:24px;}
+ .box1 { text-align:center; background-color: black; width:600px;height: 300px; margin:150px, padding:100px; float: left; display:block;position: relative; top:50px; left:30px;}
+.image1{ height: 300px; width:600px; position:relative; top: 30px; right: 30px; left: 39px;}</style>
+
+
+</head>
+
+<body>
+    <div class="menu-bar">
+        <ul class="main-nav">
+            <li class="active"><a href="#" class="drop-down"> Home </a></li>
+            <li><a href=""> About</a></li>
+            <div class="sub-menu-1"><ul><li><a href="javascript:void(0)" class="drpbtn">Mission</a></li>
+            <li><a href="#"> Vision </a></li>
+            <li> <a href="#"> Team</a></li> </ul> </div>
+            <li><a href="#"> Blogs </a></li>
+            <li><a href=""> Departments</a></li>
+            <li> <a href=""> Meet Your Doctor</a></li>
+            <li> <a href=""> Labs and Tests</a> </li>
+            <li><a href=""> Vaccines</a></li>
+            <li> <a href=""> Contact</a> </li>
+            <li> <a href=""> FAQs</a></li>
+
+        </ul>
+    </div>
+    <div class="box"><P class="title">Aslepius</P><p class="tag-line"> A leading light in health care</p> </div>
+
+<div class="gallery"> <a target="_blank" href="CS1.PNG"> <img src="CS1.PNG" width="300" height="200"> </a>
+ <a target="_blank" href="CS2.PNG"> <img src="CS2.PNG" width="300" height="200"></a>
+ <a target="_blank" href="CS3.PNG"> <img src="CS3.PNG" width="300" height="200"> </a>
+        <a target="_blank" href="CS4.PNG"> <img src="CS4.PNG" width="300" height="200"></a></div>
+    
+<div class="grid-container"><div class="forms"><div><label for="pid"><font color="white">PATIENT ID NUMBER</label><input name="pid" id="pid" required id="pid"></div>
+    <div> <label for="password"><font color="white"> PASSWORD</label> <input required name="password" id="password" type="password"></div>
+    <button class="button" type="submit" div=>SUBMIT</button> <break>
+    <button type="button" class="button"> New User? Register</button>
+</div></div>
+<div class="box1"><P>text</p> </div>
+<img src="CS5.jpg" class="image1">
+
+</body>
+</html>
