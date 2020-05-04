@@ -1,96 +1,70 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <title>Aslepius: A Leading Light in Healthcare</title>
+    <style>
 
-/* Style the body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
+
+
+    
+.menubar {
+  list-style-type: none;
   margin: 0;
-}
-
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: #333;
+  padding: 0;
   overflow: hidden;
-}
+  background-color: cornflowerblue;
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
+}
+.active, .menu-bar ul li:hover, .sub-menu-1:hover .dropbtn
+{background: whitesmoke;
+ border-radius: 3px;}
+ .sub-menu-1{display: none;}
+ .sub-menu-1 a{display: block; color: black;}
+ .sub-menu-1 a:hover{background:whitesmoke;}
+
+li{float:left;}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
+li a:hover, .sub-menu-1:hover .dropbtn {
+  background-color: whitesmoke;
+}
+
+li.sub-menu-1 {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: cornflowerblue;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ 
+}
+
+.dropdown-content a {
   color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
+.dropdown-content a:hover {background-color: smokewhite;}
+
+.sub-menu-1:hover .dropdown-content {
+  display: block;
+
 }
-
-/* Style the search box inside the navigation bar */
-.topnav input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
-}
-
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
-
-.top-left {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}
-
-.top-right {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-}
-
-.bottom-right {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
 /* Column container */
 .row {
   display: -ms-flexbox; /* IE10 */
@@ -105,7 +79,7 @@ body {
   -ms-flex: 30%; /* IE10 */
   flex: 30%;
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 18px;
 }
 
 /* Main column */
@@ -113,96 +87,79 @@ body {
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
   background-color: white;
-  padding: 20px;
+  padding: 18px;
 }
 
-/* Fake image, just for this example */
-.fakeimg {
+/* Contains Info */
+.box {
   background-color: #aaa;
-  width: 100%;
+  width: 80%;
   padding: 20px;
 }
+body {background-color: cornflowerblue;}
 
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-}
 
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;
-  }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
 </style>
 </head>
 <body>
-
-
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
-
 <div class="container">
-  <img src="a.jpg" width="960" height="540">
-  <div class="bottom-left">Bottom Left</div>
-  <div class="top-left">Top Left</div>
-  <div class="top-right">Top Right</div>
-  <div class="bottom-right">Bottom Right</div>
-  <div class="centered">Centered</div>
+ <ul class="menubar">
+  <li class="active"><a href="#home">HOME</a></li>
+  <li class="sub-menu-1">
+    <a href="javascript:void(0)" class="dropbtn">ABOUT</a>
+    <div class="dropdown-content">
+      <a href="#">Mission</a>
+      <a href="#">Vission</a>
+      <a href="#">About</a>
+    </div>
+  </li>
+  <li><a href="#Blogs">BLOGS</a></li>
+  <li class="sub-menu-1"><a href="javascript:void(0)" class="dropbtn">DEPARTMENTS</a>
+  <div class="dropdown-content">
+  <a href="#">Cardiology</a>
+  <a href="#">Dentistry</a>
+  <a href="#">Dermatology</a>
+  <a href="#">Diet and nutrition</a>
+  <a href="#">Endocrinolgy</a>
+  <a href="#">ENT</a>
+  <a href="#">General Physicians</a>
+  <a href="#">Gynacology</a>
+  <a href="#">Nephrology</a>
+  <a href="#">Neurology</a>
+  <a href="#">Ophthamology</a>
+  <a href="#">Orthopeadics</a>
+  <a href="#">Peadiatrics</a>
+  <a href="#">Psychiatry</a>
+  <a href="#">Pulmonology</a>
+  </div>
+  </li>
+  <li> <a href="#appointments">MEET YOUR DOCTOR</a></li>
+  <li> <a href="#labandtest">LABS AND TESTS</a> </li>
+  <li> <a href="#vaccines">VACCINES </a> </li>
+  <li> <a href="#faq">FAQ</a></li>
+  <li> <a href="#contact">CONTACT</a></li></div>
 </div>
-
+<div class="container">
+  <img src="CSPrj.PNG" width="960" height="540" style="width:100%;"></div>
 <div class="row">
   <div class="side">
-    <h2>About Me</h2>
-    <h5>Photo of me:</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
+   <a name="Blogs"> <h2>Blog1</h2><a>
+    <div class="box" style="height:200px;">Text</div>
     <p>Some text </p>
     <h3>More Text</h3>
     <p>Lorem ipsum dolor sit ame.</p>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div>
+    
   </div>
   <div class="main">
     <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
+    <h5>Title description</h5>
+    <div class="box" style="height:200px;">Blog 2</div>
     <p>Some text..</p>
     <p></p>
     <br>
     <h2>TITLE HEADING</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
+    <h5>Title description</h5>
+    <div class="box" style="height:200px;">Blog 3</div>
     <p>Some text..</p>
-    <p></p>
   </div>
 </div>
-
-<div class="footer">
-  <h2>Footer</h2>
-</div>
-
-</body>
-</html>
