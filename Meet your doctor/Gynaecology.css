@@ -42,3 +42,14 @@
 .card-group{
   display: flex;
 }
+
+#dr{ 
+  font-size: 25px;
+  color: #0320fc;
+  padding-top: 5px;
+}
+
+#pt{
+  font-size: 17px;
+  color: #fc6f03;  
+} 
