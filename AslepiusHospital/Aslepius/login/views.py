@@ -1,4 +1,6 @@
 from django.shortcuts import render
+import csv
+from datetime import datetime
 
 
 def FrontScreen(request):
@@ -18,7 +20,22 @@ def cardiology(request):
 
 
 def contact(request):
-    return render(request, 'login/contact.html')
+    if request.method == "POST":
+        name = request.POST['name']
+        phone = request.POST['Phone']
+        country = request.POST['country']
+        message = request.POST['subject']
+        date = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+        with open('contact.csv', 'a') as csvfile:
+            csvwriter=csv.writer(csvfile, lineterminator='\n')
+            csvwriter.writerow(["name", name])
+            csvwriter.writerow(["phone", phone])
+            csvwriter.writerow(["country", country])
+            csvwriter.writerow(["message", message])
+            csvwriter.writerow(["date", date])
+        return render(request, 'login/opening.html')
+    else:
+        return render(request, 'login/contact.html')
 
 
 def registration(request):
@@ -79,4 +96,26 @@ def psy(request):
 
 def pulmo(request):
     return render(request, 'login/pulmonology.html')
+
+def vaccines(request):
+    return render(request,'login/vaccines.html')
+
+def covid(request):
+    return render(request, 'login/Covid19.html')
+
+def BabyBlue(request):
+    return render(request, 'login/BlueBabySyndrome.html')
+
+def Brain_Tumour(request):
+    return render(request, 'login/Brain_Tumour.html')
+
+def heart(request):
+    return render(request, 'login/HeartHealth.html')
+
+
+def KidneyCare(request):
+    return render(request,'login/KidneyCancer.html')
+
+def KidneyPain(request):
+    return render(request, 'login/KidneyPain.html')
 # Create your views here.

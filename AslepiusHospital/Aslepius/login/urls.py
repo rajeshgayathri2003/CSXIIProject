@@ -19,6 +19,13 @@ urlpatterns = [path('',views.FrontScreen,name='frontscreen'),path('login',views.
                path('paediatrics',views.paediatrics, name='paediatrics'),
                path('ortho',views.ortho, name='ortho'),
                path('psy',views.psy, name='psy'),
-               path('pulmo', views.pulmo, name='pulmo')
+               path('pulmo', views.pulmo, name='pulmo'),
+               path('vaccines', views.vaccines, name='vaccines'),
+               path('BabyBlue', views.BabyBlue, name='BabyBlue'),
+               path('Brain_Tumour', views.Brain_Tumour, name='Brain_Tumour'),
+               path('covid', views.covid, name='covid'),
+               path('heart', views.heart, name='heart'),
+               path('KidneyCare', views.KidneyCare, name='KidneyCare'),
+               path('KidneyPain', views.KidneyPain, name='KidneyPain')
 
               ]
