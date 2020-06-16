@@ -33,7 +33,7 @@ def contact(request):
             csvwriter.writerow(["country", country])
             csvwriter.writerow(["message", message])
             csvwriter.writerow(["date", date])
-        return render(request, 'login/opening.html')
+        return render(request, 'login/thankyou.html')
     else:
         return render(request, 'login/contact.html')
 
@@ -118,4 +118,7 @@ def KidneyCare(request):
 
 def KidneyPain(request):
     return render(request, 'login/KidneyPain.html')
+
+def contactthankyou(request):
+    return render(request,'login/thankyou.html')
 # Create your views here.
