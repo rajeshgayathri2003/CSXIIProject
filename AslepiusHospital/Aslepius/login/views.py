@@ -79,7 +79,7 @@ def neurology(request):
 
 
 def opthomology(request):
-    return render(request,'login/opthomology.html')
+    return render(request,'login/opthamology.html')
 
 
 def paediatrics(request):
