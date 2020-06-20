@@ -1,7 +1,8 @@
 from django.shortcuts import render
 import csv
 from datetime import datetime
-
+from . import models
+from random import randint
 
 def FrontScreen(request):
     return render(request, 'login/opening.html')
@@ -39,7 +40,41 @@ def contact(request):
 
 
 def registration(request):
-    return render(request,'login/registration.html')
+    if request.method == "GET":
+        return render(request,'login/registration.html')
+    else:
+        name = request.POST['name']
+        #dob = request.POST['dob']
+        #gender = request.POST['gender']  #Please check and make the necessary corrections
+        email = request.POST['email']
+        passwd = request.POST['passwd']
+        #confirmpasswd = request.POST['confirmpasswd']
+        #mobile = request.POST['mobile']
+        Add1 = request.POST['Add1']
+        Add2 = request.POST['Add2']
+        Add3 = request.POST['Add3']
+        city = request.POST['city']
+        state = request.POST['state']
+        pincode = request.POST['pincode']
+
+        R = models.Register()
+        R.patientid=randint(0,10000)
+        R.name = name
+        R.dob = "2003-10-25" #Fix
+        R.gender = "F" #Fix
+        R.email = email
+        R.passwd = passwd
+        R.confirmpasswd = passwd #Fix
+        R.mobile = 81977 #Fix
+        R.Add1 = "Add1"
+        R.Add2 = "Add2"
+        R.Add3 = "Add3"
+        # Fix
+        R.city = city
+        R.state = state
+        R.pincode = pincode
+        R.save()
+        return render(request, 'login/opening.html')
 
 
 def dental(request):

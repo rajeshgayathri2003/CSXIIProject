@@ -60,9 +60,10 @@
 <body>
     <div class="login">
         <div class="form-box">
-            <form class="forms">
+            <form class="forms" action="#" method="POST">
+                {% csrf_token %}
                 <div><label class="label" for="name"> Name</label> <input id="name" required name="name" type="text" class="input-field" /></div>
-                <div><label class="label" for="dob"> Date of Birth</label> <input id="dob" required name="DOB" type="date" class="input-field" /></div>
+                <div><label class="label" for="dob"> Date of Birth</label> <input id="dob" required name="dob" type="date" class="input-field" /></div>
                 <div>
                     <label class="label"> Gender </label> <label for="Female">Female <input type="radio" id="Female" name="Gender"></label>
                                             <label for="Male"> Male </label><input type="radio" id="Male" name="Gender">
