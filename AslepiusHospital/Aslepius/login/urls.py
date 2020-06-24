@@ -1,10 +1,15 @@
 from django.urls import path
 from . import views
+from contactus import views as contactusviews
+from vaccines import views as vaccinesviews
 
+
+urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),]
+'''
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.login, name='login'),
                path('departments', views.dept, name='departments'),
                path('cardiology', views.cardiology, name='cardiology'),
-               path('contact', views.contact, name='contact'),
+               path('contact', contactusviews.contact, name='contact'),
                path('registration', views.registration, name='registration'),
                path('dental', views.dental, name='dental'),
                path('dermatology', views.dermatology, name='dermatology'),
@@ -20,13 +25,14 @@ urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.
                path('ortho',views.ortho, name='ortho'),
                path('psy',views.psy, name='psy'),
                path('pulmo', views.pulmo, name='pulmo'),
-               path('vaccines', views.vaccines, name='vaccines'),
+               path('vaccines', vaccinesviews.vaccines, name='vaccines'),
                path('BabyBlue', views.BabyBlue, name='BabyBlue'),
                path('Brain_Tumour', views.Brain_Tumour, name='Brain_Tumour'),
                path('covid', views.covid, name='covid'),
                path('heart', views.heart, name='heart'),
                path('KidneyCare', views.KidneyCare, name='KidneyCare'),
                path('KidneyPain', views.KidneyPain, name='KidneyPain'),
-               path('contactthankyou',views.contactthankyou, name='contactthankyou')
+               path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou')
 
               ]
+'''
