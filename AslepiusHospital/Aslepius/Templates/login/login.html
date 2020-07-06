@@ -22,7 +22,7 @@
 
         .form-box {
             width: 380px;
-            height: 480px;
+            height: 550px;
             position: relative;
             margin: 6% auto;
             background: whitesmoke;
@@ -125,11 +125,12 @@
               </div>
 
           <div class="social-icons">
-                 <img src="static/images/fb.png" />
-                 <img src="static/images/google.png" />
-                 <img src="static/images/insta.jpg" />
+                 <img src="/static/images/fb.png" />
+                 <img src="/static/images/google.png" />
+                 <img src="/static/images/insta.jpg" />
          </div>
-          <form id="logonto" class="input-group">
+          <form action="#" method="POST" id="logonto" class="input-group">
+              {%csrf_token%}
               <div>
                   <label for="email">Email Id</label>
               <input type="email" required name="email" class="input-field" id="email" />
@@ -140,16 +141,27 @@
               <div> <label for="remember password">Remember Password</label>
                     <input type="checkbox" name="remember password" class="check-box" id="remember password" />
               </div>
-              <div> <button type="submit" class="submit-btn">Login</button>
+
+              <div> <button formaction="{% url 'mypage' %}" type="submit" class="submit-btn">Login</button>
+              <div>
+                  {% for message in messages %}
+                  <H5><I>{{message}}</H5>
+                  {% endfor %}
+              </div>
               </div>
 
            </form>
-          <form id="register" class="input-group" action="{% url 'registration' %}" method="get">
-              <div><label for="name">Name</label><input required name="name" id="name" class="input-field" /></div>
-              <div><label for="email"> Email Id</label><input type="email" required name="email" id="email" class="input-field" /></div>
-              <div><label for="password">Password</label><input required type="password" id="password" name="password" class="input-field"></div>
-              <div><label for="TandC">I agree to the terms and conditions</label><input type="checkbox" name="TandC" class="check-box" id="TandC" /></div>
-              <div> <button type="submit" class="submit-btn">Register</button></div>
+          <form action="#" method="POST" id="register" class="input-group" >
+              {% csrf_token %}<!---action="{% url 'registration' %}" method="get"--->
+              <div><label for="fname">First Name</label><input required name="fname" id="fname" class="input-field" /> </div>
+              <div><label for="lname">Last Name</label><input required name="lname" id="lname" class="input-field" /> </div>
+              <div><label for="mail"> Email Id</label><input type="email" required name="mail" id="mail" class="input-field" /></div>
+              <div><label for="passwd">Password</label><input required type="password" id="passwd" name="passwd" class="input-field"></div>
+              <div><label for="TandC">I agree to the terms and conditions</label><input required type="checkbox" name="TandC" class="check-box" id="TandC" /></div>
+              <div> <button formaction="{% url 'login' %}" type="submit" class="submit-btn" >Register</button></div>
+              <div> {% for message in messages%}
+                    <h5><I>{{message}}</I> </h5>
+                   {% endfor %}</div>
           </form>
          </div>
     </div>

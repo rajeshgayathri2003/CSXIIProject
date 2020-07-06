@@ -1,21 +1,47 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import csv
 from datetime import datetime
 from . import models
 from random import randint
+from django.contrib.auth.models import User,auth
+from django.contrib import messages
 
-
-
-
+key = None
+mailkey = None
 def login(request):
-    return render(request, 'login/login.html')
+    global key
+    global mailkey
+    if request.method == "POST":
+        username = request.POST['mail']
+        email = request.POST['mail']
+        first_name = request.POST['fname']
+        last_name = request.POST['lname']
+        password = request.POST['passwd']
+        key = password
+        mailkey = email
+        if User.objects.filter(username=username).exists():
+            messages.info(request,'Email already exists')
+            return redirect('login')
+        else:
+            user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name,
+                                                   password=password)
+            user.save();
+        user_list = User.objects.filter(email=email)
+        print(user_list)
+        '''for i in user_list:
+            key = i.id'''
+        return render(request,'login/registration.html',{'user_list':user_list})
+
+    else:
+        return render(request, 'login/login.html')
+
 
 
 def registration(request):
     if request.method == "GET":
-        return render(request, 'login/registration.html')
+        return render(request, 'login/registration.html',)
     else:
-        name = request.POST['name']
+        '''name = request.POST['name']'''
         dob = request.POST['dob']
         #gender = request.POST['gender']  #Please check and make the necessary corrections
         '''if request.POST['female']=="on":
@@ -30,8 +56,9 @@ def registration(request):
             gender = "M"
         elif 'Other' in request.POST:
             gender = "O"
-        email = request.POST['email']
-        passwd = request.POST['passwd']
+        '''email = request.POST['email']
+        print(email)'''
+        '''passwd = request.POST['passwd']'''
         confirmpasswd = request.POST['confirmpasswd']
         mobile = request.POST['mobile']
         Add1 = request.POST['Add1']
@@ -40,27 +67,44 @@ def registration(request):
         city = request.POST['city']
         state = request.POST['state']
         pincode = request.POST['pincode']
+        print(key)
 
-        R = models.Register()
-        R.patientid=randint(0,10000)
-        R.name = name
-        R.dob = dob  #Issue sorted
-        R.gender = gender #Minor bug- Allows multiple choices
-        R.email = email
-        R.passwd = passwd
-        R.confirmpasswd = confirmpasswd
-        #Issue Sorted
-        R.mobile = mobile
-        #Issue Sorted
-        R.Add1 = Add1
-        R.Add2 = Add2
-        R.Add3 = Add3
-        # Issue sorted
-        R.city = city
-        R.state = state
-        R.pincode = pincode
-        R.save()
-        return render(request, 'opening/opening.html')
+        if key == confirmpasswd:
+            R = models.Register()
+            R.patientid = randint(1000,9999)
+            '''R.name = name'''
+            R.dob = dob  #Issue sorted
+            R.gender = gender #Minor bug- Allows multiple choices
+            R.email = mailkey
+            '''R.passwd = passwd'''
+            R.confirmpasswd = confirmpasswd
+            #Issue Sorted
+            R.mobile = mobile
+            #Issue Sorted
+            R.Add1 = Add1
+            R.Add2 = Add2
+            R.Add3 = Add3
+            # Issue sorted
+            R.city = city
+            R.state = state
+            R.pincode = pincode
+            R.save()
+            return render(request, 'opening/opening.html')
+        else:
+            messages.info(request,'Password does not match')
+            return redirect('registration')
+
+def mypage(request):
+    email = request.POST['email']
+    passwd = request.POST['password']
+    user = auth.authenticate(username= email, password= passwd)
+    if user is not None:
+        auth.login(request,user)
+        return render(request, 'mypage/myhomepage.html')
+    else:
+        messages.info(request,'Username or password is incorrect')
+        return redirect('login')
+
 
 '''
 def dental(request):

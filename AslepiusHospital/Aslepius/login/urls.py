@@ -4,7 +4,8 @@ from contactus import views as contactusviews
 from vaccines import views as vaccinesviews
 
 
-urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),]
+urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),
+               path('mypage', views.mypage, name='mypage')]
 '''
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.login, name='login'),
                path('departments', views.dept, name='departments'),

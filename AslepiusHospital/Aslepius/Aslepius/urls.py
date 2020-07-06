@@ -16,8 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from contactus import views as contactusviews
+from vaccines import views as vaccinesviews
 
 urlpatterns = [
-    path('admin/', admin.site.urls), path('',include('login.urls'))
+    path('admin/', admin.site.urls),
+    path('',include('opening.urls')),
+    path('contact/',contactusviews.contact,name='contact/'),
+    path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou'),
+    path('vaccines/', vaccinesviews.vaccines, name='vaccines/'),
+    path('dept/',include('dept.urls')),
+    path('login/',include('login.urls'))
 
 ]
