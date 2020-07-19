@@ -33,4 +33,7 @@ def updatepasswd(request):
         return render(request, 'mypage/updatepasswd.html')
 
 
+
+
+
 # Create your views here.

@@ -66,7 +66,7 @@ li.sub-menu-1 {
  margin: 20px;
  border-radius: 25px;
  font-family: 'Alef';
- font-size: 22px;
+ font-size: 12px;
  }
 </style>
 </head>
@@ -95,14 +95,18 @@ li.sub-menu-1 {
 {% if user.is_authenticated %}
 <h3>Hello {{user.first_name}}</h3>
 <div class="profile-box"><P style="color: white;">
-  <div>First Name:</div>
-  <div>Last Name:</div>
-  <div>Username:</div>
-  <div>Email:</div>
-  <div>Date Of Birth:</div>
-  <div>Gender:</div>
-  <div>Mobile:</div>
-  <div>Address:</div>
+  
+  <div>First Name:{{user.first_name}}</div>
+  <div>Last Name:{{user.last_name}}</div>
+  <div>Username:{{user.username}}</div>
+  <div>Email:{{user.email}}</div>
+
+  {% for d in d_lst %}
+  <div>Date Of Birth:{{d.dob}}</div>
+  <div>Gender:{{d.gender}}</div>
+  <div>Mobile:{{d.mobile}}</div>
+  <div>Address:{{d.Add1}}<br>{{d.Add2}}<br>{{d.Add3}}<br>{{d.city}},{{d.state}}<br>{{d.pincode}}</div>
+  {% endfor %}
   </P></div>
 {% endif %}
 </body>

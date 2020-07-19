@@ -95,15 +95,23 @@ def registration(request):
             return redirect('registration')
 
 def mypage(request):
-    email = request.POST['email']
-    passwd = request.POST['password']
-    user = auth.authenticate(username= email, password= passwd)
-    if user is not None:
-        auth.login(request,user)
-        return render(request, 'mypage/myhomepage.html')
-    else:
-        messages.info(request,'Username or password is incorrect')
-        return redirect('login')
+    if request.method=='POST':
+        email = request.POST['email']
+        passwd = request.POST['password']
+        user = auth.authenticate(username= email, password= passwd)
+        if user is not None:
+            username=email
+            details_lst= models.Register.objects.filter(email=username)
+            print(details_lst)
+            auth.login(request,user)
+            return render(request, 'mypage/myhomepage.html',{'d_lst':details_lst})
+        else:
+            messages.info(request,'Username or password is incorrect')
+            return redirect('login')
+    
+        
+       
+
 
 def logout(request):
     auth.logout(request)
