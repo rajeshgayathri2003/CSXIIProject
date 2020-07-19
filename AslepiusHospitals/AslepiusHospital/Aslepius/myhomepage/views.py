@@ -33,6 +33,10 @@ def updatepasswd(request):
         return render(request, 'mypage/updatepasswd.html')
 
 
+def updateprofile(request):
+    return render(request,'mypage/profilepage.html')
+
+
 
 
 

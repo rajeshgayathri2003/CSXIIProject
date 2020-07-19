@@ -62,12 +62,14 @@ li.sub-menu-1 {
 {width: 400px;
  height: 600px;
  background-color: lightblue;
- padding: 50px;
- margin: 20px;
+ padding: 30px;
+ margin: 18px;
  border-radius: 25px;
  font-family: 'Alef';
- font-size: 12px;
+ font-size: 14px;
  }
+ hr.line
+ {border-top: 1px dodgerblue;}
 </style>
 </head>
 <body bgcolor="azure">
@@ -77,7 +79,7 @@ li.sub-menu-1 {
   <li class="sub-menu-1">
     <a href="javascript:void(0)" class="dropbtn">PROFILE</a>
     <div class="dropdown-content">
-      <a href="#">UPDATE DETAILS</a>
+      <a href="{% url 'updateprofile' %}">UPDATE DETAILS</a>
       <a href="{% url 'updatepasswd' %}">CHANGE PASSWORD</a>
     </div>
   </li>
@@ -96,16 +98,16 @@ li.sub-menu-1 {
 <h3>Hello {{user.first_name}}</h3>
 <div class="profile-box"><P style="color: white;">
   
-  <div>First Name:{{user.first_name}}</div>
-  <div>Last Name:{{user.last_name}}</div>
-  <div>Username:{{user.username}}</div>
-  <div>Email:{{user.email}}</div>
+  <div>First Name<br>{{user.first_name}}<hr class="line"></div>
+  <div>Last Name<br>{{user.last_name}}<hr class="line"></div>
+  <div>Username<br>{{user.username}}<hr class="line"></div>
+  <div>Email<br>{{user.email}}<hr class="line"></div>
 
   {% for d in d_lst %}
-  <div>Date Of Birth:{{d.dob}}</div>
-  <div>Gender:{{d.gender}}</div>
-  <div>Mobile:{{d.mobile}}</div>
-  <div>Address:{{d.Add1}}<br>{{d.Add2}}<br>{{d.Add3}}<br>{{d.city}},{{d.state}}<br>{{d.pincode}}</div>
+  <div>Date Of Birth<br>{{d.dob}}<hr class="line"></div>
+  <div>Gender<br>{{d.gender}}<hr class="line"></div>
+  <div>Mobile<br>{{d.mobile}}<hr class="line"></div>
+  <div>Address<br>{{d.Add1}}<br>{{d.Add2}}<br>{{d.Add3}}<br>{{d.city}},{{d.state}}<br>{{d.pincode}}<hr class="line"></div>
   {% endfor %}
   </P></div>
 {% endif %}
