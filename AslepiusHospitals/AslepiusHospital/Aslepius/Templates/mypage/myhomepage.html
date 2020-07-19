@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
 <style>
 .menubar {
   list-style-type: none;
@@ -57,9 +58,19 @@ li.sub-menu-1 {
 .sub-menu-1:hover .dropdown-content {
   display: block;
 }
+.profile-box
+{width: 400px;
+ height: 600px;
+ background-color: lightblue;
+ padding: 50px;
+ margin: 20px;
+ border-radius: 25px;
+ font-family: 'Alef';
+ font-size: 22px;
+ }
 </style>
 </head>
-<body>
+<body bgcolor="azure">
 {% csrf_token %}
 <ul class="menubar">
   <li class="active"><a href="#home">HOME</a></li>
@@ -83,7 +94,16 @@ li.sub-menu-1 {
 </ul>
 {% if user.is_authenticated %}
 <h3>Hello {{user.first_name}}</h3>
-<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
+<div class="profile-box"><P style="color: white;">
+  <div>First Name:</div>
+  <div>Last Name:</div>
+  <div>Username:</div>
+  <div>Email:</div>
+  <div>Date Of Birth:</div>
+  <div>Gender:</div>
+  <div>Mobile:</div>
+  <div>Address:</div>
+  </P></div>
 {% endif %}
 </body>
 </html>
