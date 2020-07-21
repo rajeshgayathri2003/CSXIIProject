@@ -108,6 +108,10 @@ def mypage(request):
         else:
             messages.info(request,'Username or password is incorrect')
             return redirect('login')
+    else:
+         username=request.user.username
+         details_lst= models.Register.objects.filter(email=username)
+         return render(request,'mypage/myhomepage.html',{'d_lst':details_lst})
     
         
        
