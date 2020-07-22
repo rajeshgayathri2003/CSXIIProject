@@ -3,13 +3,13 @@ from django.db import models
 
 
 class Register(models.Model):
-    patientid= models.CharField(primary_key=True)
+    patientid= models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     dob = models.DateField()
     gender = models.CharField(max_length=1)
-    email = models.CharField()
-    passwd = models.CharField()
-    confirmpasswd = models.CharField()
+    email = models.CharField(max_length=50)
+    passwd = models.CharField(max_length=20)
+    confirmpasswd = models.CharField(max_length=20)
     mobile = models.IntegerField()
     Add1 = models.CharField(max_length=30)
     Add2 = models.CharField(max_length=30)

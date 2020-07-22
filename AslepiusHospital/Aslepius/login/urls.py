@@ -27,6 +27,7 @@ urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.
                path('heart', views.heart, name='heart'),
                path('KidneyCare', views.KidneyCare, name='KidneyCare'),
                path('KidneyPain', views.KidneyPain, name='KidneyPain'),
+               path('faq', views.faq, name='faq'),
                path('contactthankyou',views.contactthankyou, name='contactthankyou')
 
               ]

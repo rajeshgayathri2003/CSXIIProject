@@ -121,4 +121,8 @@ def KidneyPain(request):
 
 def contactthankyou(request):
     return render(request,'login/thankyou.html')
+
+def faq(request):
+    return render(request,'login/faq.html')
+
 # Create your views here.
