@@ -73,16 +73,16 @@ WSGI_APPLICATION = 'Aslepius.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'GAYATHRI',
-        'USER': 'root',
-        'PASSWORD': 'G@Y@3rajesh',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'GAYATHRI',
+#         'USER': 'root',
+#         'PASSWORD': 'G@Y@3rajesh',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
@@ -126,8 +126,8 @@ STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
-'''default': {
+DATABASES={'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-'''
+}
