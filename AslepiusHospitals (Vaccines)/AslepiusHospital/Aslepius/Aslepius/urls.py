@@ -25,8 +25,7 @@ urlpatterns = [
     path('',include('opening.urls')),
     path('contact/',contactusviews.contact,name='contact/'),
     path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou'),
-    path('vaccines/', vaccinesviews.vaccines, name='vaccines/'),
-    path('dept/',include('dept.urls')),
+    path('vaccines/', include('vaccines.urls')),
     path('login/',include('login.urls')),
     path('myhomepage/',include('myhomepage.urls')),
 
