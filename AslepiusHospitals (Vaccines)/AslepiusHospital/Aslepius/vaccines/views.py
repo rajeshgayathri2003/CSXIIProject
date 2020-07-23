@@ -33,4 +33,8 @@ def seven_seventeen_Years(request):
 def ThankYou(request):
     return render(request,'vaccines/ThankYou.html')
 
+# def CSV_read():
+#     import pandas as pd
+#     df = pd.read_csv("Vaccine_Table.csv")
+
 
