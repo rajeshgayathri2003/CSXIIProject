@@ -30,4 +30,7 @@ def five_Years(request):
 def seven_seventeen_Years(request):
     return render(request,'vaccines/7-17Years.html')
 
+def ThankYou(request):
+    return render(request,'vaccines/ThankYou.html')
+
 

@@ -32,6 +32,7 @@ urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',loginv
                path('heart', views.heart, name='heart'),
                path('KidneyCare', views.KidneyCare, name='KidneyCare'),
                path('KidneyPain', views.KidneyPain, name='KidneyPain'),
-               path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou')
-
+               path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou'),
+               path('about', views.about, name='about'),
+               path('faq', views.faq, name='faq'),
               ]

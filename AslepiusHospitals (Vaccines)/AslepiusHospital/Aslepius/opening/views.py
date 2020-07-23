@@ -22,4 +22,10 @@ def KidneyCare(request):
 
 def KidneyPain(request):
     return render(request, 'opening/KidneyPain.html')
+
+def about(request):
+    return render(request, 'About/about.html')
+
+def faq(request):
+    return render(request, 'FAQ/faq.html')
 # Create your views here.
