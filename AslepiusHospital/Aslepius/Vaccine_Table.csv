@@ -1,0 +1,37 @@
+VACCINE NUMBER,VACCINE NAME,AGE FOR VACCINE,DOSAGE,COST OF VACCINE (INR)
+HPBB,Hep B Hepatitus B,0,Birth,175
+BCGB,BCG,0,Birth,60
+OPVBR,Polio,0,Birth,230
+RTV1,Rotavirus,2,First,1500
+HIB1,Hib Hameophilus Influenza B,2,First Dose,600
+OPV1,Polio,2,First OPV,700
+DTP1,"DTap/DTP/DT Diptheria, Tetanus and Pertussis",2,First,800
+HPB2,Hep B Hepatitus B,2,Second,175
+HIB2,Hib Hameophilus Influenza B,4,Second,800
+RTV2,Rotavirus,4,Second,1500
+DTP2,"DTap/DTP/DT Diptheria, Tetanus and Pertussis",4,Second,600
+OPV2,Polio,4,Second OPV,700
+HPB3,Hep B Hepatitus B,6,Third,175
+DTP3,"DTap/DTP/DT Diptheria, Tetanus and Pertussis",6,Third,600
+RTV3,Rotavirus,6,Third,1500
+HIB3,Hib Hameophilus Influenza B,6,Third,600
+OPV3,Polio,6,Third OPV,700
+MMR1,"MMR (Measels, Mumps and Rubella)",9,First MMR,500
+HPA1,Hep A Hepatitus A,12,First,1400
+HIB4,Hib Hameophilus Influenza B,12,Booster,800
+VRC1,Varicella,15,First,1900
+DTP4,"DTap/DTP/DT Diptheria, Tetanus and Pertussis",15,Fourth,800
+HPA2,Hep A Hepatitus A,18,Second,1400
+OPVB1,Polio,18,First Booster,50
+MMR2,"MMR (Measels, Mumps and Rubella)",18,Second MMR,500
+TY1,Typhoid,24,First,300
+TYB,Typhoid,36,Booster,300
+OPVB2,Polio,60,Second Booster,50
+VRCB,Varicella,60,Booster,1900
+MMRB1,"MMR (Measels, Mumps and Rubella)",60,MMR Booster,500
+DTP5,"DTap/DTP/DT Diptheria, Tetanus and Pertussis",60,Fifth,800
+TD1,Td Tetanus and Diphtheria,84,Single,1100
+HPVC,Human Papilloma Virus (HPV),120,Single,2200
+HPVG,Human Papilloma Virus (HPV),120,Single,3200
+MMRB2,"MMR (Measels, Mumps and Rubella)",132,Booster,500
+TDB,Td Tetanus and Diphtheria,204,Booster,1100
