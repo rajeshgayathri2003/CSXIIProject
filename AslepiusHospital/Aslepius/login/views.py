@@ -5,6 +5,7 @@ from . import models
 from random import randint
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from django.core.mail import send_mail
 
 key = None
 mailkey = None
@@ -92,6 +93,10 @@ def registration(request):
             R.state = state
             R.pincode = pincode
             R.save()
+            send_mail('Registration Successful',
+             'Welcome to Aslepius','aslepius9@gmail.com',
+             [mailkey],
+             fail_silently= False)
             return render(request, 'opening/opening.html')
         else:
             messages.info(request,'Password does not match')

@@ -4,6 +4,7 @@ from contactus import views as contactusviews
 from vaccines import views as vaccinesviews
 
 
+
 urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),
                path('mypage', views.mypage, name='mypage'),path('logout', views.logout, name='logout')]
 '''
