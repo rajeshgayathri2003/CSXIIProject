@@ -16,5 +16,6 @@ urlpatterns = [path('vaccines',views.vaccines, name='vaccines'),
                path('two_three_Years', views.two_three_Years, name='two_three_Years'),
                path('five_Years', views.five_Years, name='five_Years'),
                path('seven_seventeen_Years', views.seven_seventeen_Years, name='seven_seventeen_Years'),
+               path('ThankYou', views.ThankYou, name='ThankYou'),
                path('login', loginviews.login, name='login'),
                ]

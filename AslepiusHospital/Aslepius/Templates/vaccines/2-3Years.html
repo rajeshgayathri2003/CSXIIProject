@@ -1,7 +1,6 @@
 <html>
     <head>
         <title>2-3 YEARS</title>
-        <link rel="stylesheet" href="static/css/Birth.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
         <style>
@@ -20,6 +19,17 @@
                 margin-left: 70px;
                 margin-right: 70px;
             }
+
+            #submit{
+                margin-left: 700px;
+                margin-top: 80px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                font-size: 20px;
+                background-color: rgb(255, 187, 0);
+            }
         </style>
     </head>
     <body>
@@ -28,5 +38,6 @@
             <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="checkbox">   Typhoid (First Dose)  </strong></li>
             <li class="list-group-item list-group-item-success" id="dept"><strong><input type="checkbox">   Typhoid (Booster)</strong></li>
         </ul>
+        <button type="submit" value="SUBMIT" id="submit"><strong><a href="{%url 'ThankYou' %}">SUBMIT</a></strong></button>
     </body>
 </html>
