@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from dept.models import Departments
 
 def dept(request):
     return render(request, 'dept/departments.html')

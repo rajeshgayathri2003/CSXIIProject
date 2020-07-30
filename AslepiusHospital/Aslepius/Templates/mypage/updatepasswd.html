@@ -106,20 +106,20 @@ li.sub-menu-1 {
 </head>
 <body>
 <ul class="menubar">
-  <li class="active"><a href="#home">HOME</a></li>
+  <li ><a href="{% url 'mypage'%}">HOME</a></li>
   <li class="sub-menu-1">
-    <a href="javascript:void(0)" class="dropbtn">PROFILE</a>
+    <a href="javascript:void(0)" class="active">PROFILE</a>
     <div class="dropdown-content">
       <a href="#">UPDATE DETAILS</a>
       <a href="{% url 'updatepasswd' %}">CHANGE PASSWORD</a>
     </div>
   </li>
   <li><a href="#blogs">BLOGS</a></li>
-  <li> <a href="#appointments">MEET YOUR DOCTOR</a></li>
+  <li> <a href="{% url 'dept' %}">MEET YOUR DOCTOR</a></li>
   <li> <a href="#labandtest">LABS AND TESTS</a> </li>
   <li> <a href="#vaccines">VACCINES </a> </li>
   <li> <a href="#faq">FAQ</a></li>
-  <li> <a href="#contact">CONTACT</a></li>
+  <li> <a href="{% url 'contact'%}">CONTACT</a></li>
   <li> <a href="{% url 'logout' %}"> LOGOUT</a></li>
 </ul>
 <div class="updatepasswd">

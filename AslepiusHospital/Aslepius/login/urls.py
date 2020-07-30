@@ -1,6 +1,14 @@
 from django.urls import path
 from . import views
 
+<<<<<<< HEAD
+=======
+
+
+urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),
+               path('mypage', views.mypage, name='mypage'),path('logout', views.logout, name='logout')]
+'''
+>>>>>>> 9ac291d1a101ad6b81a7e40425550cd0a2c64dc4
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.login, name='login'),
                path('departments', views.dept, name='departments'),
                path('cardiology', views.cardiology, name='cardiology'),
