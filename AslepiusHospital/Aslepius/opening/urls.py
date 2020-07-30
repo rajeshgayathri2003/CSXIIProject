@@ -4,6 +4,7 @@ from contactus import views as contactusviews
 from vaccines import views as vaccinesviews
 from dept import views as deptviews
 from login import views as loginviews
+from labs import views as labsviews
 
 
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',loginviews.login, name='login'),
@@ -35,6 +36,7 @@ urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',loginv
                path('KidneyPain', views.KidneyPain, name='KidneyPain'),
                path('contactthankyou',contactusviews.contactthankyou, name='contactthankyou'),
                path('faq',views.faq, name='faq'),
-               path('aboutus', views.aboutus, name='aboutus')
+               path('aboutus', views.aboutus, name='aboutus'),
+               path('tests', labsviews.tests, name='tests'),
 
               ]
