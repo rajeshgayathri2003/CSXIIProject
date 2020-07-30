@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-import csv
-from datetime import datetime
-
-
-def FrontScreen(request):
-    return render(request, 'login/opening.html')
-
-
-def login(request):
-    return render(request,'login/login.html')
-
-
-def dept(request):
-    return render(request, 'login/departments.html')
-
-
-def cardiology(request):
-    return render(request, 'login/cardiology.html')
-
-
-def contact(request):
-    if request.method == "POST":
-        name = request.POST['name']
-        phone = request.POST['Phone']
-        country = request.POST['country']
-        message = request.POST['subject']
-        date = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-        with open('contact.csv', 'a') as csvfile:
-            csvwriter=csv.writer(csvfile, lineterminator='\n')
-            csvwriter.writerow(["name", name])
-            csvwriter.writerow(["phone", phone])
-            csvwriter.writerow(["country", country])
-            csvwriter.writerow(["message", message])
-            csvwriter.writerow(["date", date])
-        return render(request, 'login/thankyou.html')
-    else:
-        return render(request, 'login/contact.html')
-
-
-def registration(request):
-    return render(request,'login/registration.html')
-
-
-=======
 from django.shortcuts import render, redirect
 import csv
 from datetime import datetime
@@ -172,7 +126,6 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 '''
->>>>>>> 61f8d20b1749de51cae8f50bd2748639645c85df
 def dental(request):
     return render(request,'login/dental.html')
 
@@ -226,21 +179,12 @@ def psy(request):
 
 
 def pulmo(request):
-<<<<<<< HEAD
-    return render(request, 'login/pulmonology.html')
-
-def vaccines(request):
-    return render(request,'login/vaccines.html')
-
-def covid(request):
-=======
     return render(request, 'login/pulmonology.html')'''
 
 '''def vaccines(request):
     return render(request,'login/vaccines.html')'''
 
 '''def covid(request):
->>>>>>> 61f8d20b1749de51cae8f50bd2748639645c85df
     return render(request, 'login/Covid19.html')
 
 def BabyBlue(request):
@@ -257,15 +201,6 @@ def KidneyCare(request):
     return render(request,'login/KidneyCancer.html')
 
 def KidneyPain(request):
-<<<<<<< HEAD
-    return render(request, 'login/KidneyPain.html')
-
-def contactthankyou(request):
-    return render(request,'login/thankyou.html')
-
-def faq(request):
-    return render(request,'login/faq.html')
-=======
     return render(request, 'login/KidneyPain.html')'''
 
 '''def contactthankyou(request):
@@ -299,6 +234,5 @@ def cardiology(request):
         return render(request, 'login/thankyou.html')
     else:
         return render(request, 'login/contact.html')'''
->>>>>>> 61f8d20b1749de51cae8f50bd2748639645c85df
 
 # Create your views here.
