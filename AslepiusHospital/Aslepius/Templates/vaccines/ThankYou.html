@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>THANK YOU!</title>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+        <style>
+            #heading{
+                text-align: center;
+                font-family: 'Bangers', cursive;
+                margin-top: 200px;
+                font-size: 100px;
+            }
+
+            #link{
+                margin-left: 475px;
+                text-align: center;
+                font-size: 20px;
+                font-family: 'Kalam', cursive;
+                background-color: aquamarine;
+                padding-top: 2px;
+            }
+
+            #link2{
+                margin-left: 600px;
+                text-align: center;
+                font-size: 20px;
+                font-family: 'Kalam', cursive;
+                background-color: aquamarine;
+                padding-top: 2px;
+            }
+
+            #or{
+                text-align: center;
+                font-size: 30px;
+                font-family: 'Bangers', cursive;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="heading">THANK YOU!!</h1>
+        <button type="submit" value="go back" id="link"><h2> <a href="{% url 'vaccines' %}">CLICK HERE TO GO BACK TO VACCINES!</a></h2></button>
+        <h2 id="or">OR</h2>
+        <button type="submit" value="finish" id="link2"><h2> <a href="{% url 'vaccines' %}">CLICK HERE TO FINISH!</a></h2></button>
+    </body>
+</html>

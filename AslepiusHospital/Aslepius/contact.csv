@@ -19,8 +19,31 @@ phone,9686575996
 country,United Kingdom
 message,hi
 date,16-06-2020 18:52:08
+<<<<<<< HEAD
 name,khushi kiran
 phone,9880372850
 country,India
 message,appointment enquiry
 date,20-06-2020 13:57:52
+=======
+name,Gayathri
+phone,8197768603
+country,China
+message,Success!!!
+date,20-06-2020 22:22:41
+name,Hema
+phone,8197768603
+country,India
+message,Testing done
+date,20-06-2020 22:30:47
+name,XYZ
+phone,8197768603
+country,Bangladesh
+message,Check
+date,20-06-2020 22:41:50
+name,RAJESH S
+phone,9686575996
+country,India
+message,Hello!!! Please contact me.
+date,19-07-2020 21:20:26
+>>>>>>> 61f8d20b1749de51cae8f50bd2748639645c85df

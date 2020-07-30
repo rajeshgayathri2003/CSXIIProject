@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>VACCINES</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+        <style>
+            #title{
+                    text-align: center;
+                    font-size: 80px;
+                    font-family: 'Bangers', cursive;
+                }
+
+            #sub{
+                    text-align: center;
+                    font-size: 40px;
+                    font-family: 'Kalam', cursive;
+                }
+
+            #para{
+                    text-align: center;
+                    font-size: 25px;
+                    font-family: 'Kalam', cursive;
+                }
+
+            #dept{
+                    text-align: center;
+                    padding: 25px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    margin-left: 70px;
+                    margin-right: 70px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">VACCINES</h1><br>
+        <h2 id="sub">CHOOSE THE VACCINES YOU HAVE ALREADY TAKEN!</h2><br>
+        <h3 id="para">We have divided the vaccines among different age groups. Choose the vaccines you have already taken to check which ones are left and when you can take them!</h3>
+        <br><br>      
+        <ul class="list-group">
+            <a href="{%url 'birth' %}"><li class="list-group-item list-group-item-info" id="dept"><strong>AT BIRTH</strong></li></a>
+            <a href="{%url 'two_Months' %}"><li class="list-group-item list-group-item-danger" id="dept"><strong>2 MONTHS</strong></li></a>
+            <a href="{%url 'four_Months' %}"><li class="list-group-item list-group-item-primary" id="dept"><strong>4 MONTHS</strong></li></a>
+            <a href="{%url 'six_Months' %}"><li class="list-group-item list-group-item-success" id="dept"><strong>6 MONTHS</strong></li></a>
+            <a href="{%url 'nine_twelve_Months' %}"><li class="list-group-item list-group-item-warning" id="dept"><strong>9-12 MONTHS</strong></li></a>
+            <a href="{%url 'fifteen_eighteen_Months' %}"><li class="list-group-item list-group-item-dark" id="dept"><strong>15-18 MONTHS</strong></li></a>
+            <a href="{%url 'two_three_Years' %}"><li class="list-group-item list-group-item-info" id="dept"><strong>2-3 YEARS</strong></li></a>
+            <a href="{%url 'five_Years' %}"><li class="list-group-item list-group-item-danger" id="dept"><strong>5 YEARS</strong></li></a>
+            <a href="{%url 'seven_seventeen_Years' %}"><li class="list-group-item list-group-item-success" id="dept"><strong>7-17 YEARS</strong></li></a>
+        </ul>
+    </body>
+</html>
