@@ -6,24 +6,6 @@ from random import randint
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.contrib.auth.hashers import check_password
-
-
-def generatepasswd():
-    digit=str(randint(0,9))
-    rannumu=randint(65,90)
-    rannuml=randint(97,122)
-    Lspecchar=[",","<",">",".","?","/","\"","\'",":",";","[","]","{","]","\\","|","-","_","+","=","!","@","#","$","%","^","&","*","(",")"]
-    rannumspec=randint(1,len(Lspecchar))
-    ualpha=""
-    lalpha=""
-    specchar=""
-    ualpha=chr(rannumu)
-    lalpha=chr(rannuml)
-    specchar=Lspecchar[rannumspec]
-    passwd = digit+ualpha+lalpha+specchar
-    return passwd
-
 
 key = None
 mailkey = None
@@ -35,28 +17,21 @@ def login(request):
         email = request.POST['mail']
         first_name = request.POST['fname']
         last_name = request.POST['lname']
-        # password = request.POST['passwd']
-        # key = password
+        password = request.POST['passwd']
+        key = password
         mailkey = email
         if User.objects.filter(username=username).exists():
             messages.info(request,'Email already exists')
             return redirect('login')
         else:
-            password = generatepasswd()
             user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name,
                                                    password=password)
             user.save();
-            body = 'Welcome to Aslepius\nYour username is {0}\n Your Password is {1}\nRegards,\nTeam Aslepius'.format(mailkey,password)
-            send_mail('Registration Successful',
-             body,'aslepius9@gmail.com',
-             [mailkey],
-             fail_silently= False)
-            return render(request,'login/loginthankyou.html')
-            # user_list = User.objects.filter(email=email)
-            # print(user_list)
-            '''for i in user_list:
+        user_list = User.objects.filter(email=email)
+        print(user_list)
+        '''for i in user_list:
             key = i.id'''
-            # return render(request,'login/loginthankyou.html',{'user_list':user_list})
+        return render(request,'login/registration.html',{'user_list':user_list})
 
     else:
         return render(request, 'login/login.html')
@@ -69,25 +44,19 @@ def registration(request):
     else:
         '''name = request.POST['name']'''
         dob = request.POST['dob']
-        gender = request.POST['Gender']
-        if gender=='female':
-            gender='F'
-        elif gender=='Male':
-            gender='M'
-        elif gender=='Other':
-            gender='O'  #Please check and make the necessary corrections
+        #gender = request.POST['gender']  #Please check and make the necessary corrections
         '''if request.POST['female']=="on":
             gender="F"
         elif request.POST['Male']=="on":
             gender="M"
         elif request.POST['Other']=="on":
-            gender="O"
+            gender="O"'''
         if 'female' in request.POST:
             gender = "F"
         elif 'Male' in request.POST:
             gender = "M"
         elif 'Other' in request.POST:
-            gender = "O"'''
+            gender = "O"
         '''email = request.POST['email']
         print(email)'''
         '''passwd = request.POST['passwd']'''
@@ -95,7 +64,7 @@ def registration(request):
         for i in lst:
             print('hi',i)
 
-        # confirmpasswd = request.POST['confirmpasswd']
+        confirmpasswd = request.POST['confirmpasswd']
         mobile = request.POST['mobile']
         Add1 = request.POST['Add1']
         Add2 = request.POST['Add2']
@@ -104,28 +73,34 @@ def registration(request):
         state = request.POST['state']
         pincode = request.POST['pincode']
 
-        
-        R = models.Register()
-        R.patientid = randint(1000,9999)
-        '''R.name = name'''
-        R.dob = dob  #Issue sorted
-        R.gender = gender #Minor bug- Allows multiple choices
-        R.email = mailkey
-        '''R.passwd = passwd'''
-        # R.confirmpasswd = confirmpasswd
-        #Issue Sorted
-        R.mobile = mobile
-        #Issue Sorted
-        R.Add1 = Add1
-        R.Add2 = Add2
-        R.Add3 = Add3
-        # Issue sorted
-        R.city = city
-        R.state = state
-        R.pincode = pincode
-        R.save()
-        details_lst = models.Register.objects.filter(email=mailkey)
-        return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})    
+        if key == confirmpasswd:
+            R = models.Register()
+            R.patientid = randint(1000,9999)
+            '''R.name = name'''
+            R.dob = dob  #Issue sorted
+            R.gender = gender #Minor bug- Allows multiple choices
+            R.email = mailkey
+            '''R.passwd = passwd'''
+            R.confirmpasswd = confirmpasswd
+            #Issue Sorted
+            R.mobile = mobile
+            #Issue Sorted
+            R.Add1 = Add1
+            R.Add2 = Add2
+            R.Add3 = Add3
+            # Issue sorted
+            R.city = city
+            R.state = state
+            R.pincode = pincode
+            R.save()
+            send_mail('Registration Successful',
+             'Welcome to Aslepius','aslepius9@gmail.com',
+             [mailkey],
+             fail_silently= False)
+            return render(request, 'opening/opening.html')
+        else:
+            messages.info(request,'Password does not match')
+            return redirect('registration')
 
 
 def mypage(request):
@@ -138,8 +113,6 @@ def mypage(request):
             details_lst = models.Register.objects.filter(email=username)
             print(details_lst)
             auth.login(request, user)
-            if models.Register.objects.get(email=username).last_login == "NULL":
-                return render('login/changepassword.html')
             return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})
         else:
             messages.info(request,'Username or password is incorrect')
@@ -148,31 +121,6 @@ def mypage(request):
         username = request.user.username
         details_lst = models.Register.objects.filter(email=username)
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst})
-
-def updatepasswd(request):
-    #if request.user.is_authenticated() why do I get an error?
-    if request.method == 'POST':
-        username = request.user.username
-        # oldpasswd = request.POST['oldpasswd']
-        newpasswd = request.POST['newpasswd']
-        newpasswdconfirm = request.POST['newpasswdconfirm']
-        #print(username)
-        user_lst = User.objects.get(username=username)
-        #print(user_lst)
-        #print(user_lst.password)
-        if newpasswdconfirm == newpasswd:
-            #User.objects.filter(username=username).update(password=newpasswd)
-            user_lst.set_password(newpasswd)
-            user_lst.save()
-            #print("Hello")
-            messages.info(request, 'Update Successful')
-            return render('login/registration.html')
-        else:
-            messages.info(request, "New passwords don't match")
-            return redirect('updatepasswd')
-    else:
-        return render(request,'login/changepassword.html')
-
 
 def logout(request):
     auth.logout(request)
