@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = ['login', 'contactus','vaccines','opening','dept','myhomepage',
+INSTALLED_APPS = ['login', 'contactus','vaccines','opening','dept','myhomepage','labs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,16 +73,16 @@ WSGI_APPLICATION = 'Aslepius.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'GAYATHRI',
-#         'USER': 'root',
-#         'PASSWORD': 'G@Y@3rajesh',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'GAYATHRI',
+         'USER': 'root',
+         'PASSWORD': 'G@Y@3rajesh',
+         'HOST': 'localhost',
+         'PORT': '3306',
+     }
+ }
 
 
 # Password validation
@@ -132,8 +132,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = 'Aslepius@123'
-DATABASES = {'default': {
+'''DATABASES = {'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}'''
