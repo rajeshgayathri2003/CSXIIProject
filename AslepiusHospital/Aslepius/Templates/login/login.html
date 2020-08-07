@@ -156,7 +156,7 @@
               <div><label for="fname">First Name</label><input required name="fname" id="fname" class="input-field" /> </div>
               <div><label for="lname">Last Name</label><input required name="lname" id="lname" class="input-field" /> </div>
               <div><label for="mail"> Email Id</label><input type="email" required name="mail" id="mail" class="input-field" /></div>
-              <div><label for="passwd">Password</label><input required type="password" id="passwd" name="passwd" class="input-field"></div>
+              <!---<div><label for="passwd">Password</label><input required type="password" id="passwd" name="passwd" class="input-field"></div>--->
               <div><label for="TandC">I agree to the terms and conditions</label><input required type="checkbox" name="TandC" class="check-box" id="TandC" /></div>
               <div> <button formaction="{% url 'login' %}" type="submit" class="submit-btn" >Register</button></div>
               <div> {% for message in messages%}
