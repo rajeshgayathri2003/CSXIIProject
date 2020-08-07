@@ -29,6 +29,5 @@ urlpatterns = [
     path('dept/',include('dept.urls')),
     path('login/',include('login.urls')),
     path('myhomepage/',include('myhomepage.urls')),
-    path('labs/',include('labs.urls')),
 
 ]
