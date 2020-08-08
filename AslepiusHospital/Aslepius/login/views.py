@@ -7,9 +7,10 @@ from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
+'''
 import mysql.connector
 con=mysql.connector.connect(host='localhost', user='root', passwd='G@Y@3rajesh', database='GAYATHRI')
-mycursor= con.cursor()
+mycursor= con.cursor()'''
 
 def generatepasswd():
     digit=str(randint(0,9))
@@ -53,6 +54,11 @@ def login(request):
              body,'aslepius9@gmail.com',
              [mailkey],
              fail_silently= False)
+            P  =models.Temporary_passwd()
+            P.email= email
+            P.temppasswd = password
+            P.save()
+
             return render(request,'login/loginthankyou.html')
             # user_list = User.objects.filter(email=email)
             # print(user_list)
@@ -134,28 +140,18 @@ def mypage(request):
     if request.method== "POST":
         email = request.POST['email']
         passwd = request.POST['password']
-        sql= "SELECT last_login from auth_user where email='{}';".format(email)
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        val=None
-        for i in result:
-            for j in i:
-                val=j
+        print("#",passwd)
+        print("#",models.Temporary_passwd.objects.get(email=email).temppasswd)
         user = auth.authenticate(username=email, password=passwd)
         if user is not None:
-            username = email
-            details_lst = models.Register.objects.filter(email=username)
-            print(details_lst)
-            
-            # obj=models.Register.objects.get(email=email)
-            
-            print(val)
-            print(type(val))
-            if val == "NULL":
-                auth.login(request, user)
-                return render('login/changepassword.html')
+            auth.login(request, user)
+            if passwd == models.Temporary_passwd.objects.get(email=email).temppasswd:
+                return render(request,'login/changepassword.html')
             else:
-                auth.login(request, user)
+                username = email
+                details_lst = models.Register.objects.filter(email=username)
+                print(details_lst)
+                # obj=models.Register.objects.get(email=email)
                 return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})
         else:
             messages.info(request,'Username or password is incorrect')
@@ -165,15 +161,16 @@ def mypage(request):
         details_lst = models.Register.objects.filter(email=username)
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst})
 
-def updatepasswd(request):
+def updatepasswdlogin(request):
     #if request.user.is_authenticated() why do I get an error?
     if request.method == 'POST':
         username = request.user.username
+        print(username)
         # oldpasswd = request.POST['oldpasswd']
         newpasswd = request.POST['newpasswd']
-        newpasswdconfirm = request.POST['newpasswdconfirm']
+        newpasswdconfirm = request.POST['confirmnewpasswd']
         #print(username)
-        user_lst = User.objects.get(username=username)
+        user_lst = User.objects.get(email=username)
         #print(user_lst)
         #print(user_lst.password)
         if newpasswdconfirm == newpasswd:
@@ -181,11 +178,11 @@ def updatepasswd(request):
             user_lst.set_password(newpasswd)
             user_lst.save()
             #print("Hello")
-            messages.info(request, 'Update Successful')
-            return render('login/registration.html')
+            #messages.info(request, 'Update Successful')
+            return render(request,'login/registration.html')
         else:
             messages.info(request, "New passwords don't match")
-            return redirect('updatepasswd')
+            return redirect('updatepasswdlogin')
     else:
         return render(request,'login/changepassword.html')
 
@@ -302,5 +299,16 @@ def cardiology(request):
         return render(request, 'login/thankyou.html')
     else:
         return render(request, 'login/contact.html')'''
-
+'''sql= "SELECT last_login from auth_user where email='{}';".format(email)
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        val=None
+        for i in result:
+            for j in i:
+                val=j'''
+''' print(val)
+    print(type(val))
+    if val == "NULL":
+    auth.login(request, user)
+    return render('login/changepassword.html')'''
 # Create your views here.

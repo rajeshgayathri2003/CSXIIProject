@@ -8,4 +8,5 @@ urlpatterns =[path('updatepasswd', views.updatepasswd, name='updatepasswd'),
               path('mypage', loginviews.mypage, name='mypage'),
               path('updateprofile', views.updateprofile, name ='updateprofile'),
               path('dept', deptviews.dept, name='dept'),
-              path('contact', contactusviews.contact, name='contact')]
+              path('contact', contactusviews.contact, name='contact'),
+              path('updatepasswdlogin', loginviews.updatepasswdlogin, name='updatepasswdlogin')]

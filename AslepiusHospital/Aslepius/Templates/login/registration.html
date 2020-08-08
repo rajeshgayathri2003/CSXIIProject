@@ -103,9 +103,7 @@
                 <div> <label class="label" id="state" for="state"> State </label><br /> <input  required name="state" type="text" class="input-field" /></div>
                 <div> <label class="label" id="pincode" for="pincode">PIN</label><br /><input  required name="pincode" type="number" class="input-field" /></div>
                 <div> <button type="submit" id="btn" class="submit-btn" formaction="{% url 'registration' %}">Register</button></div>
-            <div><div> {% for message in messages%}
-                    <h5><I>{{message}}</I> </h5>
-                   </div> {% endfor %}</div>
+            
             </form>
         </div>
 
