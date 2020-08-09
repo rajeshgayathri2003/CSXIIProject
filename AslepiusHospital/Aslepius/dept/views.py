@@ -116,7 +116,7 @@ def General_Physicians(request):
         'object3': obj3,
         'object4': obj4
     }
-    return render(request,'dept/GeneralPhyscians1.html',context)
+    return render(request,'dept/General_Physicians1.html',context)
 
 def cardiology(request):
     obj=Departments.objects.get(doctorID=31)

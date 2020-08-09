@@ -117,7 +117,7 @@ def registration(request):
         R.patientid = randint(1000,9999)
         '''R.name = name'''
         R.dob = dob  #Issue sorted
-        R.gender = gender #Minor bug- Allows multiple choices
+        R.gender = gender # Issue Sorted
         R.email = mailkey
         '''R.passwd = passwd'''
         # R.confirmpasswd = confirmpasswd

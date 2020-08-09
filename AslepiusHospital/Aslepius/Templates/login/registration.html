@@ -78,8 +78,7 @@
         <div class="form-box">
             <form class="forms" action="#" method="POST">
                 {% csrf_token %}
-                <!---{% for user in user_list %}
-    <div><label class="label" for="name"> Name</label> <input value={{user.first_name}} maxlength="50" id="name" required name="name" type="text" class="input-field" /></div>--->
+            
                 <div><label id="dob" class="label" for="dob"> Date of Birth</label><br /> <input required name="dob" type="date" class="input-field" /></div>
                 <div>
                     <label class="label" id="Gender"> Gender </label><br /><label id="female" for="female">Female <input type="radio" name="Gender" value="female"></label>
@@ -92,7 +91,7 @@
                 <div> <label class="label" id="mobile" for="mobile">Mobile Number</label><br /> <input required type="tel" name="mobile" class="input-field" /></div>
                 <div> <label class="label" id="Add1" for="Add1"> Address Line 1</label><br /> <input maxlength="70" required name="Add1" type="text" class="input-field" /></div>
                 <div> <label class="label" id="Add2" for="Add2"> Address Line 2</label><br /> <input maxlength="65" required type="text" name="Add2" class="input-field" /></div>
-                <!---{% endfor %}-->
+                
 
 </div>
         <div class="form-box-1">
@@ -101,12 +100,12 @@
                 <div> <label class="label" id="Add3" for="Add3"> Address Line 3</label><br /> <input maxlength="65"  type="text" name="Add3" required class="input-field" /></div>
                 <div> <label class="label" id="city" for="city"> City</label><br /> <input  required name="city" type="text" class="input-field" /></div>
                 <div> <label class="label" id="state" for="state"> State </label><br /> <input  required name="state" type="text" class="input-field" /></div>
-                <div> <label class="label" id="pincode" for="pincode">PIN</label><br /><input  required name="pincode" type="number" class="input-field" /></div>
+                <div> <label class="label" id="pincode" for="pincode">PIN</label><br /><input  required name="pincode" type="number" class="input-field" /></div> </div>
                 <div> <button type="submit" id="btn" class="submit-btn" formaction="{% url 'registration' %}">Register</button></div>
             
             </form>
-        </div>
+     
 
-    </div>
+   
 </body>
 </html>
