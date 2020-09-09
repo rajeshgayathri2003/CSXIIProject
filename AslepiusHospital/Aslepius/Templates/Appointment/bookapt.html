@@ -46,8 +46,17 @@
     <div><p id="desc">Department:{{docobject.specialisation}}</p></div>
     <div><p id="desc">Patient Name:{{user.first_name}} {{user.last_name}}</p></div>
     <form>
-        <div><p id="desc"><label>Date:</label><br /><input type="date" min="2020-08-14" required /></p></div>
-        <div><p id="desc"><label>Time:</label><br /><input type="time"  min="17:00" required /></p></div>
+        <input name="docID" type="hidden" value= {{docobject.docID}} >
+        <input name="patient" type="hidden" value= {{user.email}}>
+
+        <div><p id="desc"><label>Date:</label><br /><input type="date" min="2020-09-12" required /></p></div>
+        <div><p id="desc"><label name="Time" id="Time">Time:</label><br />
+            <label >{{time.timeslot1}}</label><input name="Time"  type="radio"/>
+            <label >{{time.timeslot2}}</label><input name="Time" type="radio"/>
+            <label >{{time.timeslot3}}</label><input name="Time" type="radio"/>
+            <label >{{time.timeslot4}}</label><input name="Time" type="radio"/>
+            <label>{{time.timeslot5}}</label><input name="Time" type="radio"/>
+        </p></div>
         <div><p id="desc"><label>Purpose of visit:</label><br /><input type="text" required /></p></div>
         <center><button id="desc" type="submit">BOOK NOW</button></center>
     </form>

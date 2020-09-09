@@ -8,12 +8,18 @@ def bookappointment(request):
         doc_id = request.POST['docid']
         #doc_dict = {'doctorID':doc_id}
         docobj = Departments.objects.get(doctorID = doc_id)
-        doc_dict = {'docobject':docobj}
-        print("SUCCESS")
-
+        time_details = models.Availability.objects.get(doctorID = doc_id)
+        #print(time_details)
+        doc_dict = {'docobject':docobj, 'time': time_details}
+        #print("SUCCESS")
+        
         return render (request, 'appointment/bookapt.html',doc_dict)
     else:
         return render (request, 'appointment/bookapt.html')
+
+#def booknow(request):
+    #if request.method == "POST":
+        
 
    
 
