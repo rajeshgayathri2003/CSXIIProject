@@ -22,4 +22,7 @@ class Appointment(models.Model):
     date = models.DateField()
 
 
+class Booking(models.Model):
+    doctorID = models.IntegerField(primary_key = True)
+    email = models.EmailField()
 # Create your models here.

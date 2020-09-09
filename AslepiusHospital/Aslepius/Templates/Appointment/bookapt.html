@@ -40,10 +40,11 @@
     <title>Book Appointment</title>
 </head>
 <body bgcolor="beige">
+    {%csrf_token%}
     <p id="book">Book An Appointment</p>
-    <div><p id="desc">Doctor Name:</p></div>
-    <div><p id="desc">Department:</p></div>
-    <div><p id="desc">Patient Name:</p></div>
+    <div><p id="desc">Doctor Name: {{ docobject.docname }}</p></div>
+    <div><p id="desc">Department:{{docobject.specialisation}}</p></div>
+    <div><p id="desc">Patient Name:{{user.first_name}} {{user.last_name}}</p></div>
     <form>
         <div><p id="desc"><label>Date:</label><br /><input type="date" min="2020-08-14" required /></p></div>
         <div><p id="desc"><label>Time:</label><br /><input type="time"  min="17:00" required /></p></div>
