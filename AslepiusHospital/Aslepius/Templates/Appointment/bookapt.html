@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Amiko' rel='stylesheet'>
+    <style>
+        #book {
+            font-family: Allerta;
+            font-size: 48px;
+            text-align: center;
+        }
+        #desc {
+            font-family:Amiko;
+            font-size: 22px;
+            text-align: center;
+        }
+        input[type=text],[type=date],[type=time],select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type=submit]{
+        width: 20%;
+        background-color: lightskyblue;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+    </style>
+    <title>Book Appointment</title>
+</head>
+<body bgcolor="beige">
+    {%csrf_token%}
+    <p id="book">Book An Appointment</p>
+    <div><p id="desc">Doctor Name: {{ docobject.docname }}</p></div>
+    <div><p id="desc">Department:{{docobject.specialisation}}</p></div>
+    <div><p id="desc">Patient Name:{{user.first_name}} {{user.last_name}}</p></div>
+    <form>
+        <input name="docID" type="hidden" value= {{docobject.docID}} >
+        <input name="patient" type="hidden" value= {{user.email}}>
+
+        <div><p id="desc"><label>Date:</label><br /><input type="date" min="2020-09-12" required /></p></div>
+        <div><p id="desc"><label name="Time" id="Time">Time:</label><br />
+            <label >{{time.timeslot1}}</label><input name="Time"  type="radio"/>
+            <label >{{time.timeslot2}}</label><input name="Time" type="radio"/>
+            <label >{{time.timeslot3}}</label><input name="Time" type="radio"/>
+            <label >{{time.timeslot4}}</label><input name="Time" type="radio"/>
+            <label>{{time.timeslot5}}</label><input name="Time" type="radio"/>
+        </p></div>
+        <div><p id="desc"><label>Purpose of visit:</label><br /><input type="text" required /></p></div>
+        <center><button id="desc" type="submit">BOOK NOW</button></center>
+    </form>
+    
+
+</body>
+</html>

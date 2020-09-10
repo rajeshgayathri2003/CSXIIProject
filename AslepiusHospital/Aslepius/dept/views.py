@@ -116,7 +116,7 @@ def General_Physicians(request):
         'object3': obj3,
         'object4': obj4
     }
-    return render(request,'dept/GeneralPhyscians1.html',context)
+    return render(request,'dept/General_Physicians1.html',context)
 
 def cardiology(request):
     obj=Departments.objects.get(doctorID=31)
@@ -133,12 +133,12 @@ def pulmonology(request):
     obj=Departments.objects.get(doctorID=34)
     obj1=Departments.objects.get(doctorID=35)
     obj2=Departments.objects.get(doctorID=36)
-    obj2=Departments.objects.get(doctorID=37)
+    obj3=Departments.objects.get(doctorID=37)
     context={
         'object':obj,
         'object1':obj1,
         'object2':obj2,
-        'object3': obj3
+        'object3': obj3,
     }
     return render(request,'dept/pulmonology1.html',context)
 

@@ -11,7 +11,7 @@ class Register(models.Model):
     '''email = models.ForeignKey(User, on_delete= models.CASCADE,)'''
     email = models.EmailField()
     '''passwd = models.CharField(max_length=15)'''
-    confirmpasswd = models.CharField(max_length=15)
+    '''confirmpasswd = models.CharField(max_length=15)'''
     mobile = models.BigIntegerField()
     Add1 = models.CharField(max_length=70)
     Add2 = models.CharField(max_length=65)
@@ -21,6 +21,8 @@ class Register(models.Model):
     pincode = models.IntegerField()
 
 
-
+class Temporary_passwd(models.Model):
+    email= models.EmailField(primary_key=True,)
+    temppasswd= models.CharField(max_length=8)
 
 # Create your models here.

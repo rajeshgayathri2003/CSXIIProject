@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from contactus.views import contact
 from login import views as loginviews
-
+from appointment import views as aptviews
 
 urlpatterns =[path('departments', views.dept, name='departments'),
                path('cardiology', views.cardiology, name='cardiology'),
@@ -23,4 +23,5 @@ urlpatterns =[path('departments', views.dept, name='departments'),
                path('psychiatry',views.psychiatry, name='v'),
                path('pulmonology', views.pulmonology, name='pulmonology'),
                path('login', loginviews.login, name='login'),
+               path('bookappointment', aptviews.bookappointment, name= 'bookappointment')
               ]

@@ -29,6 +29,7 @@ urlpatterns = [
     path('dept/',include('dept.urls')),
     path('login/',include('login.urls')),
     path('myhomepage/',include('myhomepage.urls')),
+    path('appointment/', include('appointment.urls')),
     path('labs/',include('labs.urls')),
 
 ]

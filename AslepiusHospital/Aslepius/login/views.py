@@ -6,6 +6,27 @@ from random import randint
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import check_password
+'''
+import mysql.connector
+con=mysql.connector.connect(host='localhost', user='root', passwd='G@Y@3rajesh', database='GAYATHRI')
+mycursor= con.cursor()'''
+
+def generatepasswd():
+    digit=str(randint(0,9))
+    rannumu=randint(65,90)
+    rannuml=randint(97,122)
+    Lspecchar=[",","<",">",".","?","/","\"","\'",":",";","[","]","{","]","\\","|","-","_","+","=","!","@","#","$","%","^","&","*","(",")"]
+    rannumspec=randint(1,len(Lspecchar))
+    ualpha=""
+    lalpha=""
+    specchar=""
+    ualpha=chr(rannumu)
+    lalpha=chr(rannuml)
+    specchar=Lspecchar[rannumspec]
+    passwd = digit+ualpha+lalpha+specchar
+    return passwd
+
 
 key = None
 mailkey = None
@@ -17,23 +38,36 @@ def login(request):
         email = request.POST['mail']
         first_name = request.POST['fname']
         last_name = request.POST['lname']
-        password = request.POST['passwd']
-        key = password
+        # password = request.POST['passwd']
+        # key = password
         mailkey = email
         if User.objects.filter(username=username).exists():
             messages.info(request,'Email already exists')
             return redirect('login')
         else:
+            password = generatepasswd()
             user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name,
                                                    password=password)
             user.save();
-        user_list = User.objects.filter(email=email)
-        print(user_list)
-        '''for i in user_list:
+            body = 'Welcome to Aslepius\nYour username is {0}\n Your Password is {1}\nRegards,\nTeam Aslepius'.format(mailkey,password)
+            send_mail('Registration Successful',
+             body,'aslepius9@gmail.com',
+             [mailkey],
+             fail_silently= False)
+            P  =models.Temporary_passwd()
+            P.email= email
+            P.temppasswd = password
+            P.save()
+            #messages.info(request, 'Welcome to Aslepius')
+            return render(request,'login/loginthankyou.html')
+            # user_list = User.objects.filter(email=email)
+            # print(user_list)
+            '''for i in user_list:
             key = i.id'''
-        return render(request,'login/registration.html',{'user_list':user_list})
+            # return render(request,'login/loginthankyou.html',{'user_list':user_list})
 
     else:
+        #messages.info(request,'Welcome to Aslepius')
         return render(request, 'login/login.html')
 
 
@@ -44,19 +78,25 @@ def registration(request):
     else:
         '''name = request.POST['name']'''
         dob = request.POST['dob']
-        #gender = request.POST['gender']  #Please check and make the necessary corrections
+        gender = request.POST['Gender']
+        if gender=='female':
+            gender='F'
+        elif gender=='Male':
+            gender='M'
+        elif gender=='Other':
+            gender='O'  #Please check and make the necessary corrections
         '''if request.POST['female']=="on":
             gender="F"
         elif request.POST['Male']=="on":
             gender="M"
         elif request.POST['Other']=="on":
-            gender="O"'''
+            gender="O"
         if 'female' in request.POST:
             gender = "F"
         elif 'Male' in request.POST:
             gender = "M"
         elif 'Other' in request.POST:
-            gender = "O"
+            gender = "O"'''
         '''email = request.POST['email']
         print(email)'''
         '''passwd = request.POST['passwd']'''
@@ -64,7 +104,7 @@ def registration(request):
         for i in lst:
             print('hi',i)
 
-        confirmpasswd = request.POST['confirmpasswd']
+        # confirmpasswd = request.POST['confirmpasswd']
         mobile = request.POST['mobile']
         Add1 = request.POST['Add1']
         Add2 = request.POST['Add2']
@@ -73,47 +113,49 @@ def registration(request):
         state = request.POST['state']
         pincode = request.POST['pincode']
 
-        if key == confirmpasswd:
-            R = models.Register()
-            R.patientid = randint(1000,9999)
-            '''R.name = name'''
-            R.dob = dob  #Issue sorted
-            R.gender = gender #Minor bug- Allows multiple choices
-            R.email = mailkey
-            '''R.passwd = passwd'''
-            R.confirmpasswd = confirmpasswd
-            #Issue Sorted
-            R.mobile = mobile
-            #Issue Sorted
-            R.Add1 = Add1
-            R.Add2 = Add2
-            R.Add3 = Add3
-            # Issue sorted
-            R.city = city
-            R.state = state
-            R.pincode = pincode
-            R.save()
-            send_mail('Registration Successful',
-             'Welcome to Aslepius','aslepius9@gmail.com',
-             [mailkey],
-             fail_silently= False)
-            return render(request, 'opening/opening.html')
-        else:
-            messages.info(request,'Password does not match')
-            return redirect('registration')
+        
+        R = models.Register()
+        #R.patientid = User.objects.filter(id= request.user.id)
+        R.patientid = randint(10000,100000)
+        '''R.name = name'''
+        R.dob = dob  #Issue sorted
+        R.gender = gender # Issue Sorted
+        R.email = mailkey
+        '''R.passwd = passwd'''
+        # R.confirmpasswd = confirmpasswd
+        #Issue Sorted
+        R.mobile = mobile
+        #Issue Sorted
+        R.Add1 = Add1
+        R.Add2 = Add2
+        R.Add3 = Add3
+        # Issue sorted
+        R.city = city
+        R.state = state
+        R.pincode = pincode
+        R.save()
+        details_lst = models.Register.objects.get(email=mailkey)
+
+        return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})    
 
 
 def mypage(request):
     if request.method== "POST":
         email = request.POST['email']
         passwd = request.POST['password']
+        print("#",passwd)
+        print("#",models.Temporary_passwd.objects.get(email=email).temppasswd)
         user = auth.authenticate(username=email, password=passwd)
         if user is not None:
-            username = email
-            details_lst = models.Register.objects.filter(email=username)
-            print(details_lst)
             auth.login(request, user)
-            return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})
+            if passwd == models.Temporary_passwd.objects.get(email=email).temppasswd:
+                return render(request,'login/changepassword.html')
+            else:
+                username = email
+                details_lst = models.Register.objects.filter(email=username)
+                print(details_lst)
+                # obj=models.Register.objects.get(email=email)
+                return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})
         else:
             messages.info(request,'Username or password is incorrect')
             return redirect('login')
@@ -121,6 +163,32 @@ def mypage(request):
         username = request.user.username
         details_lst = models.Register.objects.filter(email=username)
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst})
+
+def updatepasswdlogin(request):
+    #if request.user.is_authenticated() why do I get an error?
+    if request.method == 'POST':
+        username = request.user.username
+        print(username)
+        # oldpasswd = request.POST['oldpasswd']
+        newpasswd = request.POST['newpasswd']
+        newpasswdconfirm = request.POST['confirmnewpasswd']
+        #print(username)
+        user_lst = User.objects.get(email=username)
+        #print(user_lst)
+        #print(user_lst.password)
+        if newpasswdconfirm == newpasswd:
+            #User.objects.filter(username=username).update(password=newpasswd)
+            user_lst.set_password(newpasswd)
+            user_lst.save()
+            #print("Hello")
+            #messages.info(request, 'Update Successful')
+            return render(request,'login/registration.html')
+        else:
+            messages.info(request, "New passwords don't match")
+            return redirect('updatepasswdlogin')
+    else:
+        return render(request,'login/changepassword.html')
+
 
 def logout(request):
     auth.logout(request)
@@ -234,5 +302,16 @@ def cardiology(request):
         return render(request, 'login/thankyou.html')
     else:
         return render(request, 'login/contact.html')'''
-
+'''sql= "SELECT last_login from auth_user where email='{}';".format(email)
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        val=None
+        for i in result:
+            for j in i:
+                val=j'''
+''' print(val)
+    print(type(val))
+    if val == "NULL":
+    auth.login(request, user)
+    return render('login/changepassword.html')'''
 # Create your views here.

@@ -83,11 +83,11 @@ li.sub-menu-1 {
       <a href="{% url 'updatepasswd' %}">CHANGE PASSWORD</a>
     </div>
   </li>
-  <li><a href="#blogs">BLOGS</a></li>
+  <!---<li><a href="#blogs">BLOGS</a></li>--->
   <li> <a href="{% url 'dept'%}">MEET YOUR DOCTOR</a></li>
-  <li> <a href="#labandtest">LABS AND TESTS</a> </li>
-  <li> <a href="#vaccines">VACCINES </a> </li>
-  <li> <a href="#faq">FAQ</a></li>
+  <li> <a href="{% url 'tests' %}">LABS AND TESTS</a> </li>
+  <li> <a href="{% url 'vaccines' %}">VACCINES </a> </li>
+  <li> <a href="{% url 'faq' %}">FAQ</a></li>
   <li> <a href="{% url 'contact' %}">CONTACT</a></li>
   <li> <a href="{% url 'logout' %}"> LOGOUT</a></li>
 

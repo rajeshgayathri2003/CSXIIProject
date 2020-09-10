@@ -1,5 +1,7 @@
 <html>
-<head> <title>registration</title>
+<head>
+    <title>registration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
     <style>
         .login {
             width: 100%;
@@ -10,7 +12,7 @@
             position: absolute;
         }
 
-        input[type=text],[type=tel],[type=number],[type=email],[type=date],[type=password]{
+        input[type=text], [type=tel], [type=number], [type=email], [type=date], [type=password] {
             width: 70%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -18,11 +20,20 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-
         }
-        .form-box{
-            margin-top:80px;
-            margin-bottom:10px;
+
+         #state {
+            font-family: Open Sans;
+            font-size: 18px;
+        }
+        #pincode,#Add1, #Add2, #Add3, #city, #dob, #female, #Gender, #Male, #mobile, #Other,#btn {
+            font-family: Open Sans;
+            font-size: 18px;
+        }
+
+        .form-box {
+            margin-top: 80px;
+            margin-bottom: 10px;
             margin-left: 15px;
             margin-right: 15px;
             width: 600px;
@@ -31,6 +42,7 @@
             background-color: beige;
             float: left;
         }
+
         .form-box-1 {
             margin-top: 80px;
             margin-bottom: 10px;
@@ -42,9 +54,11 @@
             background-color: beige;
             float: right;
         }
-        .label{
-            display:inline-block;
+
+        .label {
+            display: inline-block;
         }
+
         .submit-btn {
             width: 85%;
             padding: 10px;
@@ -55,7 +69,7 @@
             border: 0;
             outline: none;
             border-radius: 30px;
-           }
+        }
     </style>
 </head>
 <body>
@@ -64,36 +78,34 @@
         <div class="form-box">
             <form class="forms" action="#" method="POST">
                 {% csrf_token %}
-                {% for user in user_list %}
-                <div><label class="label" for="name"> Name</label> <input value={{user.first_name}} maxlength="50" id="name" required name="name" type="text" class="input-field" /></div>
-                <div><label class="label" for="dob"> Date of Birth</label> <input id="dob" required name="dob" type="date" class="input-field" /></div>
+            
+                <div><label id="dob" class="label" for="dob"> Date of Birth</label><br /> <input required name="dob" type="date" class="input-field" /></div>
                 <div>
-                    <label  class="label"> Gender </label><label for="female">Female <input  type="radio" id="female" name="female"></label>
-                                            <label for="Male"> Male </label><input type="radio"  id="Male" name="Male">
-                                            <label for="Other"> Other</label> <input type="radio"  id="Other" name="Other" />
+                    <label class="label" id="Gender"> Gender </label><br /><label id="female" for="female">Female <input type="radio" name="Gender" value="female"></label>
+                    <label for="Male" id="Male"> Male </label><input type="radio" name="Gender" value="Male">
+                    <label for="Other" id="Other"> Other</label> <input type="radio" name="Gender" value="Other" />
                 </div>
-                <div><label class="label"for="email">Email Address</label> <input value={{user.email}} id="email" required name="email" type="email" class="input-field" /></div>
-                <!---<div><label class="label" for="passwd"> Password</label> <input id="passwd" required name="passwd" type="password" class="input-field" /></div> --->
-                <div> <label class="label" for="confirmpasswd"> Confirm password</label> <input id="confirmpasswd" required name="confirmpasswd" type="password" class="input-field" /></div>
-                <div> <label class="label" for="mobile">Mobile Number</label> <input id="mobile" required type="tel" name="mobile" class="input-field" /></div>
-                {% endfor %}
+                <!--- <div><label class="label"for="email">Email Address</label> <input value={{user.email}} id="email" required name="email" type="email" class="input-field" /></div>
+    <div><label class="label" for="passwd"> Password</label> <input id="passwd" required name="passwd" type="password" class="input-field" /></div>
+    <div> <label class="label" for="confirmpasswd"> Confirm password</label> <input id="confirmpasswd" required name="confirmpasswd" type="password" class="input-field" /></div>--->
+                <div> <label class="label" id="mobile" for="mobile">Mobile Number</label><br /> <input required type="tel" name="mobile" class="input-field" /></div>
+                <div> <label class="label" id="Add1" for="Add1"> Address Line 1</label><br /> <input maxlength="70" required name="Add1" type="text" class="input-field" /></div>
+                <div> <label class="label" id="Add2" for="Add2"> Address Line 2</label><br /> <input maxlength="65" required type="text" name="Add2" class="input-field" /></div>
+                
 
-        </div>
+</div>
         <div class="form-box-1">
 
-                <div> <label class="label" for="Add1"> Address Line 1</label> <input maxlength="70" id="Add1" required name="Add1" type="text" class="input-field" /></div>
-                <div> <label class="label" for="Add2"> Address Line 2</label> <input maxlength="65" id="Add2" required type="text" name="Add2" class="input-field" /></div>
-                <div> <label class="label" for="Add3"> Address Line 3</label> <input maxlength="65" id="Add3" type="text" name="Add3" required class="input-field" /></div>
-                <div> <label class="label" for="city"> City</label> <input id="city" required name="city" type="text" class="input-field" /></div>
-                <div> <label class="label" for="state"> State </label> <input id="state" required name="state" type="text" class="input-field" /></div>
-                <div> <label class="label" for="pincode">PIN</label> <input id="pincode" required name="pincode" type="number" class="input-field" /></div>
-                <div> <button type="submit" class="submit-btn" formaction="{% url 'registration' %}">Register</button></div>
-            <div><div> {% for message in messages%}
-                    <h5><I>{{message}}</I> </h5>
-                   </div> {% endfor %}</div>
+                
+                <div> <label class="label" id="Add3" for="Add3"> Address Line 3</label><br /> <input maxlength="65"  type="text" name="Add3" required class="input-field" /></div>
+                <div> <label class="label" id="city" for="city"> City</label><br /> <input  required name="city" type="text" class="input-field" /></div>
+                <div> <label class="label" id="state" for="state"> State </label><br /> <input  required name="state" type="text" class="input-field" /></div>
+                <div> <label class="label" id="pincode" for="pincode">PIN</label><br /><input  required name="pincode" type="number" class="input-field" /></div> </div>
+                <div> <button type="submit" id="btn" class="submit-btn" formaction="{% url 'registration' %}">Register</button></div>
+            
             </form>
-        </div>
+     
 
-    </div>
+   
 </body>
 </html>
