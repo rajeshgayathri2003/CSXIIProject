@@ -58,7 +58,7 @@ def login(request):
             P.email= email
             P.temppasswd = password
             P.save()
-
+            #messages.info(request, 'Welcome to Aslepius')
             return render(request,'login/loginthankyou.html')
             # user_list = User.objects.filter(email=email)
             # print(user_list)
@@ -67,6 +67,7 @@ def login(request):
             # return render(request,'login/loginthankyou.html',{'user_list':user_list})
 
     else:
+        #messages.info(request,'Welcome to Aslepius')
         return render(request, 'login/login.html')
 
 
@@ -114,7 +115,8 @@ def registration(request):
 
         
         R = models.Register()
-        R.patientid = randint(1000,9999)
+        #R.patientid = User.objects.filter(id= request.user.id)
+        R.patientid = randint(10000,100000)
         '''R.name = name'''
         R.dob = dob  #Issue sorted
         R.gender = gender # Issue Sorted
@@ -132,7 +134,8 @@ def registration(request):
         R.state = state
         R.pincode = pincode
         R.save()
-        details_lst = models.Register.objects.filter(email=mailkey)
+        details_lst = models.Register.objects.get(email=mailkey)
+
         return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})    
 
 
