@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Labs
+import csv
 # Create your views here.
 
 def tests(request):
@@ -55,7 +56,128 @@ def tests(request):
         'object24': obj24,
         'object25': obj25
     }
-    return render(request,'labs/labs1.html', context)
+    return render(request, 'labs/labs1.html', context)
+
+def booking(request):
+    if request.method=='GET':
+        if request.GET.get("Thyroid"):
+            test = Labs.objects.filter(testID=1)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VIT D & B12"):
+            test = Labs.objects.filter(testID=2)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VITAL CARE VITAMIN AND MINERAL CARE"):
+            test = Labs.objects.filter(testID=3)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VITAL BONE CARE"):
+            test = Labs.objects.filter(testID=4)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("LIVER FUNCTION CARE"):
+            test = Labs.objects.filter(testID=5)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("LIVER AND KIDNEY PROFILE"):
+            test = Labs.objects.filter(testID=6)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("OSTEOSCREEN PANEL"):
+            test = Labs.objects.filter(testID=7)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("Thyro SCREEN PANEL"):
+            test = Labs.objects.filter(testID=8)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VITAL CARE DIABETES"):
+            test = Labs.objects.filter(testID=9)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VITAL CARE HEART"):
+            test = Labs.objects.filter(testID=10)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("LIPID SCREEN"):
+            test = Labs.objects.filter(testID=11)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("HYPERTENSION PROFILE"):
+            test = Labs.objects.filter(testID=12)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("GLUCOSE FASTING"):
+            test = Labs.objects.filter(testID=13)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("COMPLETE BLOOD COUNT"):
+            test = Labs.objects.filter(testID=14)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("COMPLETE URINE EXAM"):
+            test = Labs.objects.filter(testID=15)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("BILIRUBIN TOTAL"):
+            test = Labs.objects.filter(testID=16)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("HOMOCYSTEIN SERUM"):
+            test = Labs.objects.filter(testID=17)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("FREE T3 & T4"):
+            test = Labs.objects.filter(testID=18)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("ULTRASONOGRAPHY"):
+            test = Labs.objects.filter(testID=19)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("HEMOGLOBIN A1C"):
+            test = Labs.objects.filter(testID=20)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("VITAL CARE ANEMIA "):
+            test = Labs.objects.filter(testID=21)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("CALCIUM SERUM"):
+            test = Labs.objects.filter(testID=22)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("ALLERGY SCREENING"):
+            test = Labs.objects.filter(testID=23)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("MASTER CHECK DIAMOND "):
+            test = Labs.objects.filter(testID=24)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+        elif request.GET.get("MASTER CHECK GOLD"):
+            test = Labs.objects.filter(testID=25)
+            return render(request, 'labs/payment.html', {'t_lst': test})
+
+
+def payment(request):
+    if request.method == "POST":
+        fname = request.POST['fname']
+        email = request.POST['email']
+        add = request.POST['adr']
+        city = request.POST['city']
+        testname = request.POST['testname']
+        price = request.POST['Price']
+        state = request.POST['state']
+        cardname = request.POST['cname']
+        creditcard_num = request.POST['ccnum']
+        expiry_month = request.POST['expmonth']
+        expiry_year = request.POST['expyear']
+        cvv = request.POST['cvv']
+        with open('payment.csv', 'a') as csvfile:
+            csvwriter=csv.writer(csvfile, lineterminator='\n')
+            csvwriter.writerow(["fname", fname])
+            csvwriter.writerow(["email", email])
+            csvwriter.writerow(["add", add])
+            csvwriter.writerow(["city", city])
+            csvwriter.writerow(["testname", testname])
+            csvwriter.writerow(["price", price])
+            csvwriter.writerow(["state", state])
+            csvwriter.writerow(["cardname", cardname])
+            csvwriter.writerow(["creditcard_num", creditcard_num])
+            csvwriter.writerow(["expiry_month", expiry_month])
+            csvwriter.writerow(["expiry_year", expiry_year])
+            csvwriter.writerow(["cvv", cvv])
+        return render(request, 'labs/redirect.html')
+    else:
+        return render(request, 'labs/payment.html')
+
+def redirect(request):
+    return render(request, 'labs/redirect.html')
+
+def redirect1(request):
+    return render(request, 'opening/opening.html')
+
+
+
+
 
 
 
