@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Labs
 import csv
+from login import models as loginmodels
+from appointment import models as aptmodels
 # Create your views here.
 
 def tests(request):
@@ -139,19 +141,21 @@ def booking(request):
 
 def payment(request):
     if request.method == "POST":
-        fname = request.POST['fname']
+        fname = request.POST['firstname']
         email = request.POST['email']
-        add = request.POST['adr']
+        add = request.POST['address']
         city = request.POST['city']
         testname = request.POST['testname']
-        price = request.POST['Price']
+        price = request.POST['price']
         state = request.POST['state']
-        cardname = request.POST['cname']
-        creditcard_num = request.POST['ccnum']
+        pincode = request.POST['Pincode']
+        cardname = request.POST['cardname']
+        creditcard_num = request.POST['cardnumber']
         expiry_month = request.POST['expmonth']
         expiry_year = request.POST['expyear']
         cvv = request.POST['cvv']
-        with open('payment.csv', 'a') as csvfile:
+        print(fname, email, 'hllo')
+        with open('payments.csv', 'a') as csvfile:
             csvwriter=csv.writer(csvfile, lineterminator='\n')
             csvwriter.writerow(["fname", fname])
             csvwriter.writerow(["email", email])
@@ -160,6 +164,7 @@ def payment(request):
             csvwriter.writerow(["testname", testname])
             csvwriter.writerow(["price", price])
             csvwriter.writerow(["state", state])
+            csvwriter.writerow(["Pincode", pincode])
             csvwriter.writerow(["cardname", cardname])
             csvwriter.writerow(["creditcard_num", creditcard_num])
             csvwriter.writerow(["expiry_month", expiry_month])
@@ -173,7 +178,10 @@ def redirect(request):
     return render(request, 'labs/redirect.html')
 
 def redirect1(request):
-    return render(request, 'opening/opening.html')
+    username = request.user.username
+    details_lst = loginmodels.Register.objects.filter(email=username)
+    appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+    return render(request, 'mypage/myhomepage.html',{'d_lst':details_lst, 'a_lst': appointment_lst})
 
 
 

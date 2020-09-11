@@ -121,8 +121,8 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
-      
+      <form action="#" method="POST">
+        {%csrf_token%}
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
@@ -185,10 +185,10 @@ span.price {
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
-        <form action="#" method="post">
-        {%csrf_token%}
-        <input type="submit" formaction="redirect" value="Continue to checkout" class="btn">
-        </form>
+        
+      
+        <input type="submit" formaction="{% url 'payment' %}" value="Continue to checkout" class="btn">
+       
       </form>
     </div>
   </div>
