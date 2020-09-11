@@ -15,10 +15,10 @@ class Availability(models.Model):
     dayunavailable2 = models.CharField(max_length = 10)
 
 class Appointment(models.Model):
-    aptid = models.IntegerField(primary_key = True)
+    aptid = models.AutoField(primary_key = True,)
     doctorID = models.ForeignKey(deptmodels.Departments, on_delete = models.CASCADE, )
     patientID = models.ForeignKey(User, on_delete = models.CASCADE, )
-    time = models.TimeField()
+    time = models.CharField(max_length = 15)
     date = models.DateField()
 
 

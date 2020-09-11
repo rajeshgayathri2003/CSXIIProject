@@ -7,6 +7,7 @@ from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
+from appointment import models as aptmodels
 '''
 import mysql.connector
 con=mysql.connector.connect(host='localhost', user='root', passwd='G@Y@3rajesh', database='GAYATHRI')
@@ -116,7 +117,7 @@ def registration(request):
         
         R = models.Register()
         #R.patientid = User.objects.filter(id= request.user.id)
-        R.patientid = randint(10000,100000)
+        #R.patientid = randint(10000,100000)
         '''R.name = name'''
         R.dob = dob  #Issue sorted
         R.gender = gender # Issue Sorted
@@ -135,8 +136,8 @@ def registration(request):
         R.pincode = pincode
         R.save()
         details_lst = models.Register.objects.get(email=mailkey)
-
-        return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})    
+        messages.info(request, 'Kindly login with your new password')
+        return redirect('login')    
 
 
 def mypage(request):
@@ -153,16 +154,18 @@ def mypage(request):
             else:
                 username = email
                 details_lst = models.Register.objects.filter(email=username)
-                print(details_lst)
+                appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+                print(appointment_lst)
                 # obj=models.Register.objects.get(email=email)
-                return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst})
+                return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst, 'a_lst': appointment_lst})
         else:
             messages.info(request,'Username or password is incorrect')
             return redirect('login')
     else:
         username = request.user.username
         details_lst = models.Register.objects.filter(email=username)
-        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst})
+        appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst})
 
 def updatepasswdlogin(request):
     #if request.user.is_authenticated() why do I get an error?

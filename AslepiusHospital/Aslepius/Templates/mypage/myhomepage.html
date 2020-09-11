@@ -67,7 +67,20 @@ li.sub-menu-1 {
  border-radius: 25px;
  font-family: 'Alef';
  font-size: 14px;
+ float: left;
  }
+
+ .apt-box{width: 300px;
+ height: 600px;
+ background-color: lightblue;
+ padding: 30px;
+ margin: 18px;
+ border-radius: 25px;
+ font-family: 'Alef';
+ font-size: 14px;
+ float:right;}
+
+
  hr.line
  {border-top: 1px dodgerblue;}
 </style>
@@ -110,6 +123,17 @@ li.sub-menu-1 {
   <div>Address<br>{{d.Add1}}<br>{{d.Add2}}<br>{{d.Add3}}<br>{{d.city}},{{d.state}}<br>{{d.pincode}}<hr class="line"></div>
   {% endfor %}
   </P></div>
+  <div class="apt-box"> <P style="color: white;">
+    <h3>Appointments</h3>
+    {% for a in a_lst %}
+    <div>{{a.doctorID}}</div>
+    <div>{{a.date}}</div>
+    <div>{{a.time}}</div>
+    <hr class="line">
+    {% endfor %}
+  </P>
+
+  </div>
 {% endif %}
 </body>
 </html>

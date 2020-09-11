@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Register(models.Model):
-    patientid= models.IntegerField(primary_key=True,)
+    patientid= models.AutoField(primary_key=True,)
     '''name = models.CharField(max_length=50)'''
     dob = models.DateField()
     gender = models.CharField(max_length=1)
