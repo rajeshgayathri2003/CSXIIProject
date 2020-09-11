@@ -55,6 +55,8 @@ body {
 </head>
 <body>
 <h1 id="meet1">DIAGNOSTIC TESTS</h1>
+<form action="#" method='get'>
+{%csrf_token%}
 <div class="container">
 	<div class="box">{% block content1 %}{% endblock %}</div>
 	<div class="box">{% block content2 %}{% endblock %}</div>
@@ -90,5 +92,6 @@ body {
 	<div class="box">{% block content24 %}{% endblock %}</div>
 	<div class="box">{% block content25 %}{% endblock %}</div>
 </div>
+</form>
 </body>
 </html>

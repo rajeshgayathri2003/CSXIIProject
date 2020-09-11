@@ -75,13 +75,12 @@ WSGI_APPLICATION = 'Aslepius.wsgi.application'
 
 DATABASES = {
      'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'GAYATHRI',
-         'USER': 'root',
-         'PASSWORD': 'G@Y@3rajesh',
-         'HOST': 'localhost',
-         'PORT': '3306',
-     }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'CX11Project',
+        'USER': 'root',
+        'PASSWORD': 'khushi',
+        'HOST': 'localhost',
+    }
  }
 
 
