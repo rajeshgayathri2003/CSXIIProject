@@ -42,8 +42,14 @@ def booknow(request):
         return render(request, 'appointment/bookapt.html')
 
         
-
-   
+def cancel(request):
+    if request.method == "POST":
+        aptid = request.POST['aptid']
+        obj_delete = models.Appointment.objects.get(aptid = aptid)
+        obj_delete.delete()
+        print("SUCCESS")
+        return render(request, 'appointment/cancelapt.html')
+    
 
 
 

@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
-from contactus import views as contactusviews
-from vaccines import views as vaccinesviews
+#from contactus import views as contactusviews
+#from vaccines import views as vaccinesviews
+from appointment import views as aptviews
 
 
 
 urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),
                path('mypage', views.mypage, name='mypage'),path('logout', views.logout, name='logout'),
-               path('updatepasswdlogin', views.updatepasswdlogin, name='updatepasswdlogin')]
+               path('updatepasswdlogin', views.updatepasswdlogin, name='updatepasswdlogin'),
+               path('cancel', aptviews.cancel, name='cancel')]
 '''
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.login, name='login'),
                path('departments', views.dept, name='departments'),

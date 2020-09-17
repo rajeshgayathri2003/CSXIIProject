@@ -3,6 +3,7 @@ from dept import models as deptmodels
 from django.contrib.auth.models import User
 
 
+
 class Availability(models.Model):
     sno = models.IntegerField(primary_key = True)
     doctorID = models.ForeignKey(deptmodels.Departments, on_delete = models.CASCADE, )
