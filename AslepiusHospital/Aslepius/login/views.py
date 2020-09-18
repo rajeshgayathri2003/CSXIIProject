@@ -182,7 +182,7 @@ def mypage(request):
     else:
         username = request.user.username
         details_lst = models.Register.objects.filter(email=username)
-        appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+        appointment_lst = aptmodels.Appointment.objects.filter(status =0, patientID = request.user.id, )
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst})
 
 def updatepasswdlogin(request):
