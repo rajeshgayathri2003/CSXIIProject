@@ -16,21 +16,32 @@
           <h3 class="card-title" id="Daksh">Dr. Sharvari Gude</h3>
           <p class="card-text" id="D">Dietician/Nutritionist (12 years)</p>
           <p class="card-text" id="degree">MSc. - Dietetics & Food Service Management</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+          <form action="#" method = "POST" >
+          {% csrf_token %}
+          <!---<label for ="docid">DOCID</label>--->
+          <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
+          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
+    
+          </button></form>
         </div>
       </div>
       <div class="card">
         <img src="https://www.narayanahealth.org/sites/default/files/styles/doctors_image_style_200x200_/public/default_images/doctor-default_0.png?itok=W_uYmu-m" class="card-img-top" alt="...">
         <div class="card-body">
+    
           <h3 class="card-title" id="doctor">Dr. Uma P</h3>
-          <p class="card-text" id="post">Dietician/Nutritionist (19 years)</p>
-          <p class="card-text" id="degree">MSc - Food and Applied Nutrition</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+    <p class="card-text" id="post">Dietician/Nutritionist (19 years)</p>
+    <p class="card-text" id="degree">MSc - Food and Applied Nutrition</p>
+          <form action="#" method = "POST" >
+            {% csrf_token %}
+            <!---<label for ="docid">DOCID</label>--->
+            <input type="hidden" id="docid" name="docid" value = {{object1.doctorID}}>
+            <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
+      
+            </button></form>
         </div>
       </div>
     </div>
-
+    
   </body>
 </html>

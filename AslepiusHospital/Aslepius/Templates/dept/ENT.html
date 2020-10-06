@@ -13,11 +13,33 @@
       <div class="card">
         <img src="https://www.narayanahealth.org/sites/default/files/styles/doctors_image_style_200x200_/public/default_images/doctor-default_0.png?itok=W_uYmu-m" class="card-img-top" alt="...">
         <div class="card-body">
+          <h5 class="card-title" id="doctor">Dr. Aishwarya Murthy</h5>
+          <p class="card-text" id="post">Consultant (11 years)</p>
+          <p class="card-text" id="degree">MBBS,DLO,DNB</p>
+          <form action="#" method = "POST" >
+          
+          {% csrf_token %}
+          <!---<label for ="docid">DOCID</label>--->
+          <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
+          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
+    
+          </button></form>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.narayanahealth.org/sites/default/files/styles/doctors_image_style_200x200_/public/default_images/doctor-default_0.png?itok=W_uYmu-m" class="card-img-top" alt="...">
+        <div class="card-body">
           <h3 class="card-title" id="doctor">Dr. Apoorva Nayak</h3>
           <p class="card-text" id="post">Visiting Consultant (7 years)</p>
           <p class="card-text" id="degree">MBBS,MS(ENT)</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+          <form action="#" method = "POST" >
+          
+            {% csrf_token %}
+            <!---<label for ="docid">DOCID</label>--->
+            <input type="hidden" id="docid" name="docid" value = {{object1.doctorID}}>
+            <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
+      
+            </button></form>
         </div>
       </div>
       <div class="card">
@@ -26,17 +48,14 @@
           <h3 class="card-title" id="doctor">Dr. George Elizabeth</h3>
           <p class="card-text" id="post">Senior Consultant (20 years)</p>
           <p class="card-text" id="degree">MBBS,DLO,DNB</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://www.narayanahealth.org/sites/default/files/styles/doctors_image_style_200x200_/public/default_images/doctor-default_0.png?itok=W_uYmu-m" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title" id="doctor">Dr. Aishwarya Murthy</h5>
-          <p class="card-text" id="post">Consultant (11 years)</p>
-          <p class="card-text" id="degree">MBBS,DLO,DNB</p>
-          <input type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%">
+          <form action="#" method = "POST" >
+          
+            {% csrf_token %}
+            <!---<label for ="docid">DOCID</label>--->
+            <input type="hidden" id="docid" name="docid" value = {{object2.doctorID}}>
+            <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
+      
+            </button></form>
         </div>
       </div>
     </div>
