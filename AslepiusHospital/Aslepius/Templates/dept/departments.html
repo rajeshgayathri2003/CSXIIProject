@@ -9,6 +9,9 @@
     <body>
         <h1 id="title">DEPARTMENTS</h1>
         <h3 id="choose">Choose the department to see doctors</h3>
+        <div>{% for message in messages %}
+                <H5 id="choose"><I>{{message}}</H5>
+                {% endfor %}</div>
         <ul class="list-group">
             {% if user.is_authenticated %}
             <a href="{%url 'cardiology' %}"><li class="list-group-item list-group-item-danger" id="dept"><strong>CARDIOLOGY</strong></li></a>

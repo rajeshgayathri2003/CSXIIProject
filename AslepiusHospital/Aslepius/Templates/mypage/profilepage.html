@@ -154,12 +154,11 @@
                     <a href="{% url 'updatepasswd' %}">CHANGE PASSWORD</a>
                 </div>
             </li>
-            <li><a href="#blogs">BLOGS</a></li>
-            <li> <a href="#appointments">MEET YOUR DOCTOR</a></li>
-            <li> <a href="#labandtest">LABS AND TESTS</a> </li>
-            <li> <a href="#vaccines">VACCINES </a> </li>
-            <li> <a href="#faq">FAQ</a></li>
-            <li> <a href="#contact">CONTACT</a></li>
+            <li> <a href="{% url 'dept'%}">MEET YOUR DOCTOR</a></li>
+            <li> <a href="{% url 'tests' %}">LABS AND TESTS</a> </li>
+            <li> <a href="{% url 'vaccines' %}">VACCINES </a> </li>
+            <li> <a href="{% url 'faq' %}"> FAQ </a></li>
+            <li> <a href="{% url 'contact' %}">CONTACT</a></li>
             <li> <a href="{% url 'logout' %}"> LOGOUT</a></li>
         </ul>
 
@@ -172,16 +171,16 @@
                 <div><label class="label" for="email">Email Address</label> <input value={{user.email}} id="email" required name="email" type="email" class="input-field" /></div>
                 {% endif %}
                 {% for d in d_lst %}
-                <div><label class="label" for="dob"> Date of Birth</label> <input value={{d.dob}} id="dob" required name="dob" type="text" class="input-field" /></div>
+                <div><label class="label" for="dob"> Date of Birth</label> <input value="{{d.dob}}" id="dob" required name="dob" type="text" class="input-field" disabled /></div>
                 <div> <label class="label" for="mobile">Mobile Number</label> <input value={{d.mobile}} id="mobile" required type="tel" name="mobile" class="input-field" /></div>
 
 
 </div>
         <div class="form-box-1">
 
-            <div> <label class="label" for="Add1"> Address Line 1</label> <input value={{d.Add1}} maxlength="70" id="Add1" required name="Add1" type="text" class="input-field" /></div>
-            <div> <label class="label" for="Add2"> Address Line 2</label> <input value={{d.Add2}} maxlength="65" id="Add2" required type="text" name="Add2" class="input-field" /></div>
-            <div> <label class="label" for="Add3"> Address Line 3</label> <input value={{d.Add3}} maxlength="65" id="Add3" type="text" name="Add3" required class="input-field" /></div>
+            <div> <label class="label" for="Add1"> Address Line 1</label> <input value="{{d.Add1}}" maxlength="70" id="Add1" required name="Add1" type="text" class="input-field" /></div>
+            <div> <label class="label" for="Add2"> Address Line 2</label> <input value="{{d.Add2}}" maxlength="65" id="Add2" required type="text" name="Add2" class="input-field" /></div>
+            <div> <label class="label" for="Add3"> Address Line 3</label> <input value="{{d.Add3}}" maxlength="65" id="Add3" type="text" name="Add3" required class="input-field" /></div>
             <div> <label class="label" for="city"> City</label> <input id="city" value={{d.city}} required name="city" type="text" class="input-field" /></div>
             <div> <label class="label" for="state"> State </label> <input id="state" value={{d.state}} required name="state" type="text" class="input-field" /></div>
             <div> <label class="label" for="pincode">PIN</label> <input id="pincode" value={{d.pincode}} required name="pincode" type="number" class="input-field" /></div>

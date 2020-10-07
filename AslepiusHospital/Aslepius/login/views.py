@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
 from appointment import models as aptmodels
+from dept import models as deptmodels
 '''
 import mysql.connector
 con=mysql.connector.connect(host='localhost', user='root', passwd='G@Y@3rajesh', database='GAYATHRI')
@@ -155,16 +156,33 @@ def mypage(request):
                 username = email
                 details_lst = models.Register.objects.filter(email=username)
                 appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+                returndict =  {'d_lst': details_lst, 'a_lst': appointment_lst}
+                '''val = 1
+                temp ={}
+                for i in appointment_lst:
+                    print(i)
+                    docid = i.doctorID.doctorID
+                    doc_lst = deptmodels.Departments.objects.get(doctorID = docid)
+                    key = 'doc' + str(val)
+                    temp[key] =  doc_lst
+                    val+=1
+                doc_lst = []
+                print(temp)
+                for key in temp:
+                    doc_lst.append(temp[key])
+                returndict['doc_lst'] = doc_lst
+
                 print(appointment_lst)
                 # obj=models.Register.objects.get(email=email)
-                return render(request, 'mypage/myhomepage.html', {'d_lst': details_lst, 'a_lst': appointment_lst})
+                print(returndict)'''
+                return render(request, 'mypage/myhomepage.html', returndict)
         else:
             messages.info(request,'Username or password is incorrect')
             return redirect('login')
     else:
         username = request.user.username
         details_lst = models.Register.objects.filter(email=username)
-        appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
+        appointment_lst = aptmodels.Appointment.objects.filter(status =0, patientID = request.user.id, )
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst})
 
 def updatepasswdlogin(request):

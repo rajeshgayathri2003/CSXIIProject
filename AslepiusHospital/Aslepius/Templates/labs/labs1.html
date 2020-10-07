@@ -2,7 +2,11 @@
 {% block content1 %}
 <h3 id="test">{{ object1.testname }}</h3>
 <p id="test">PRICE:<br>INR.{{ object1.testprice}}</p>
+{% if user.is_authenticated %}
 <input type="submit" name="Thyroid" formaction="booking" value="Book Now" id="book" style="margin-left: 12%"/>
+{% else %}
+<input type="submit" name="Thyroid" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+{% endif %}
 {% endblock %}
 
 {% block content2 %}

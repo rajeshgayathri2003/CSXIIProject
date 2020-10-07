@@ -123,15 +123,35 @@ li.sub-menu-1 {
   <div>Address<br>{{d.Add1}}<br>{{d.Add2}}<br>{{d.Add3}}<br>{{d.city}},{{d.state}}<br>{{d.pincode}}<hr class="line"></div>
   {% endfor %}
   </P></div>
-  <div class="apt-box"> <P style="color: white;">
+  <!---<var>x</var>=1--->
+  <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h3>Appointments</h3>
     {% for a in a_lst %}
-    <div>{{a.doctorID}}</div>
+    <div>{{a.doctorID.docname}}</div>
+    <div>{{a.doctorID.specialisation}}</div>
     <div>{{a.date}}</div>
     <div>{{a.time}}</div>
+    <form method="POST" action="{% url 'cancel' %}">
+      {% csrf_token %}
+      <input name ="aptid" type="hidden" value={{a.aptid}}>
+      <button type="submit" onclick="myFunction()">Cancel</button>
+    </form>
     <hr class="line">
     {% endfor %}
+
   </P>
+  <script>
+    function myFunction() {
+      var txt;
+      var r = confirm("Click Ok to confirm the cancellation");
+      if (r == true) {
+        action = "{% url 'cancel' %}"
+      } else {
+        action = "{% url 'mypage' %}"
+      }
+      document.getElementById("apt").innerHTML = txt;
+    }
+    </script>
 
   </div>
 {% endif %}
