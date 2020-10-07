@@ -39,7 +39,7 @@ def updateprofile(request):
         fname = request.POST['fname']
         lname = request.POST['lname']
         email = request.POST['email']
-        dob = request.POST['dob']
+        #dob = request.POST['dob']
         mobile = request.POST['mobile']
         Add1 = request.POST['Add1']
         Add2 = request.POST['Add2']
@@ -50,7 +50,7 @@ def updateprofile(request):
         user_lst= User.objects.filter(username=username)
         user_lst.update(first_name=fname, last_name=lname, username=email, email=email)
         details_lst = loginmodels.Register.objects.filter(email=username)
-        details_lst.update(dob=dob, mobile=mobile, Add1=Add1, Add2= Add2, Add3=Add3, city=city, state=state, pincode=pincode)
+        details_lst.update(mobile=mobile, Add1=Add1, Add2= Add2, Add3=Add3, city=city, state=state, pincode=pincode)
         messages.info(request,'Update Successful')
         return redirect('updateprofile')
     else:
