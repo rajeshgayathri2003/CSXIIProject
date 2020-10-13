@@ -6,20 +6,22 @@ from django.core.mail import send_mail
 import datetime
 from django.contrib import messages
 
-
+''' This function passes the doctor id of the doctor 
+    who the patient wishes to meet to the appointments
+    page
+'''
 def bookappointment(request):
     if request.method == "POST":
         doc_id = request.POST['docid']
-        #doc_dict = {'doctorID':doc_id}
         docobj = Departments.objects.get(doctorID = doc_id)
         time_details = models.Availability.objects.get(doctorID = doc_id)
-        #print(time_details)
         doc_dict = {'docobject':docobj, 'time': time_details}
-        #print("SUCCESS")
-        
         return render (request, 'appointment/bookapt.html',doc_dict)
     else:
         return render (request, 'appointment/bookapt.html')
+
+'''This function books an appointment with the doctor and also checks 
+    if the doctor is available at the specified time'''
 
 def booknow(request):
     if request.method == "POST":
@@ -41,14 +43,20 @@ def booknow(request):
             body = 'Dear {0},\nYour appointment with {1} has been confirmed on {2} at {3}\nPlease be on time.\n Regards,\nTeam Aselpius'.format(request.user.first_name, Departments.objects.get(doctorID = docID).docname, date, time)
             send_mail('Appointment Booked', body,
             'aslepius9@gmail.com', [request.user.email,], fail_silently = False)
-            #instance.doctorID = docID
-            #instance.patientID = request.user
-            #instance.save
             return render(request, 'appointment/appointmentthankyou.html')
     else:
         return render(request, 'appointment/bookapt.html')
 
-        
+
+'''This function asks you to confirm your cancellation'''
+def confirm(request):
+    if request.method == "POST":
+        aptid = request.POST['aptid']
+        obj_delete = models.Appointment.objects.filter(aptid = aptid)
+        a_dict = {'aptid' : obj_delete}
+    return render(request, 'appointment/confirmcancel.html', a_dict)
+
+'''This function enables the patient to cancel the appointment'''        
 def cancel(request):
     if request.method == "POST":
         aptid = request.POST['aptid']
@@ -57,6 +65,9 @@ def cancel(request):
         print("SUCCESS")
         return render(request, 'appointment/cancelapt.html')
 
+
+'''This function checks if the doctor is available
+    during the specified time slot'''
 def check(doctorID, date, time):
     availability = models.Availability.objects.get(doctorID = doctorID)
     slot = models.Appointment.objects.filter(time = time)

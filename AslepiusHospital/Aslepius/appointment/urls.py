@@ -7,4 +7,5 @@ urlpatterns = [path('bookappointment', views.bookappointment, name = 'bookappoin
                path('booknow', views.booknow, name = 'booknow'),
                path('mypage', loginviews.mypage, name='mypage'),
                path('cancel', views.cancel, name='cancel'),
-               path('dept', deptviews.dept, name='dept')]
+               path('dept', deptviews.dept, name='dept'),
+               path('confirm', views.confirm, name='confrim')]

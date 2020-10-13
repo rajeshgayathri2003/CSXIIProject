@@ -6,6 +6,7 @@ from contactus import views as contactusviews
 from vaccines import views as vaccinesviews
 from labs import views as labsviews
 from opening import views as openingviews
+from appointment import views as aptviews
 
 urlpatterns =[path('updatepasswd', views.updatepasswd, name='updatepasswd'),
               path('mypage', loginviews.mypage, name='mypage'),
@@ -15,4 +16,5 @@ urlpatterns =[path('updatepasswd', views.updatepasswd, name='updatepasswd'),
               path('updatepasswdlogin', loginviews.updatepasswdlogin, name='updatepasswdlogin'),
               path('vaccines', vaccinesviews.vaccines, name = 'vaccines'),
               path('tests', labsviews.tests, name= 'tests'),
-              path('faq', openingviews.faq, name= 'faq')]
+              path('faq', openingviews.faq, name= 'faq'),
+              path('confirm', aptviews.confirm, name='confirm')]

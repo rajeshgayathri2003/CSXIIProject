@@ -131,10 +131,10 @@ li.sub-menu-1 {
     <div>{{a.doctorID.specialisation}}</div>
     <div>{{a.date}}</div>
     <div>{{a.time}}</div>
-    <form method="POST" action="{% url 'cancel' %}">
+    <form method="POST" action="{% url 'confirm' %}">
       {% csrf_token %}
       <input name ="aptid" type="hidden" value={{a.aptid}}>
-      <button type="submit" onclick="myFunction()">Cancel</button>
+      <button type="submit">Cancel</button>
     </form>
     <hr class="line">
     {% endfor %}
