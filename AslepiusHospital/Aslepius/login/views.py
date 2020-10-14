@@ -101,11 +101,12 @@ def registration(request):
             gender = "O"'''
         '''email = request.POST['email']
         print(email)'''
-        '''passwd = request.POST['passwd']'''
+        '''passwd = request.POST['passwd']
         lst = User.objects.filter(username= mailkey)
         for i in lst:
-            print('hi',i)
-
+            print('hi',i)'''
+        details_lst_1 = User.objects.get(email=mailkey)
+        print(request.user)
         # confirmpasswd = request.POST['confirmpasswd']
         mobile = request.POST['mobile']
         Add1 = request.POST['Add1']
@@ -122,7 +123,7 @@ def registration(request):
         '''R.name = name'''
         R.dob = dob  #Issue sorted
         R.gender = gender # Issue Sorted
-        R.email = mailkey
+        R.email = details_lst_1
         '''R.passwd = passwd'''
         # R.confirmpasswd = confirmpasswd
         #Issue Sorted
@@ -136,7 +137,8 @@ def registration(request):
         R.state = state
         R.pincode = pincode
         R.save()
-        details_lst = models.Register.objects.get(email=mailkey)
+        #details_lst = models.Register.objects.get(email=mailkey)
+        print("requires", details_lst_1)
         messages.info(request, 'Kindly login with your new password')
         return redirect('login')    
 
@@ -154,7 +156,7 @@ def mypage(request):
                 return render(request,'login/changepassword.html')
             else:
                 username = email
-                details_lst = models.Register.objects.filter(email=username)
+                details_lst = models.Register.objects.filter(email = request.user.id)
                 appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
                 returndict =  {'d_lst': details_lst, 'a_lst': appointment_lst}
                 '''val = 1
@@ -181,7 +183,7 @@ def mypage(request):
             return redirect('login')
     else:
         username = request.user.username
-        details_lst = models.Register.objects.filter(email=username)
+        details_lst = models.Register.objects.filter(email= request.user.id)
         appointment_lst = aptmodels.Appointment.objects.filter(status =0, patientID = request.user.id, )
         return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst})
 

@@ -8,8 +8,8 @@ class Register(models.Model):
     '''name = models.CharField(max_length=50)'''
     dob = models.DateField()
     gender = models.CharField(max_length=1)
-    '''email = models.ForeignKey(User, on_delete= models.CASCADE,)'''
-    email = models.EmailField()
+    email = models.ForeignKey(User, on_delete= models.CASCADE,)
+    '''email = models.EmailField()'''
     '''passwd = models.CharField(max_length=15)'''
     '''confirmpasswd = models.CharField(max_length=15)'''
     mobile = models.BigIntegerField()

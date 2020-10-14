@@ -35,6 +35,7 @@ def updatepasswd(request):
 
 def updateprofile(request):
     username=request.user.username
+    userid = request.user.id
     if request.method=="POST":
         fname = request.POST['fname']
         lname = request.POST['lname']
@@ -49,14 +50,14 @@ def updateprofile(request):
         pincode = request.POST['pincode']
         user_lst= User.objects.filter(username=username)
         user_lst.update(first_name=fname, last_name=lname, username=email, email=email)
-        details_lst = loginmodels.Register.objects.filter(email=username)
+        details_lst = loginmodels.Register.objects.filter(email=userid)
         details_lst.update(mobile=mobile, Add1=Add1, Add2= Add2, Add3=Add3, city=city, state=state, pincode=pincode)
         messages.info(request,'Update Successful')
         return redirect('updateprofile')
     else:
-        details_lst= loginmodels.Register.objects.filter(email=username)
+        details_lst= loginmodels.Register.objects.filter(email=userid)
         print(details_lst)
-        dob= loginmodels.Register.objects.get(email=username).dob.strftime('%y-%m-%d')
+        dob= loginmodels.Register.objects.get(email=userid).dob.strftime('%y-%m-%d')
         print(dob)
         return render(request,'mypage/profilepage.html',{'d_lst':details_lst})
 
