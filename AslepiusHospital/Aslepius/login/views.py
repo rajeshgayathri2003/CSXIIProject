@@ -12,7 +12,7 @@ from dept import models as deptmodels
 
 
 '''This function is used to generate a random password that will 
-be sent to the user's email. The user will be asked to chnage this 
+be sent to the user's email. The user will be asked to change this 
 during his first login
 '''
 def generatepasswd():
