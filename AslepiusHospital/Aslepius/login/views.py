@@ -8,11 +8,12 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
 from appointment import models as aptmodels
+from labs import models as labs
 from dept import models as deptmodels
 
 
 '''This function is used to generate a random password that will 
-be sent to the user's email. The user will be asked to chnage this 
+be sent to the user's email. The user will be asked to change this 
 during his first login
 '''
 def generatepasswd():
@@ -136,8 +137,10 @@ def mypage(request):
                 username = email
                 details_lst = models.Register.objects.filter(email = request.user.id)
                 appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
-                returndict =  {'d_lst': details_lst, 'a_lst': appointment_lst}
+                labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id)
+                returndict = {'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst':labs_lst}
                 return render(request, 'mypage/myhomepage.html', returndict)
+
         else:
             messages.info(request,'Username or password is incorrect')
             return redirect('login')
@@ -145,7 +148,8 @@ def mypage(request):
         username = request.user.username
         details_lst = models.Register.objects.filter(email= request.user.id)
         appointment_lst = aptmodels.Appointment.objects.filter(status =0, patientID = request.user.id, )
-        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst})
+        labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id,)
+        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
 
 
 '''Upon first login the User is asked to change her password. 

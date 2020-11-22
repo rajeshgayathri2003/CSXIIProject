@@ -127,17 +127,30 @@ li.sub-menu-1 {
   </P></div>
   <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h3>Tests</h3>
-    {% for t in t_lst %}
-    <div>{{t.fname}}</div>
-    <div>{{t.testname}}</div>
+    {% for l in l_lst %}
+    <div>{{l.testname}}</div>
     <form method="POST" action="{% url 'confirm' %}">
       {% csrf_token %}
-      <input name ="testp_id" type="hidden" value={{t.patientID}}>
+      <input name ="test_id" type="hidden" value={{l.bookingID}}>
       <button type="submit">Cancel</button>
     </form>
     <hr class="line">
     {% endfor %}
-  </P></div>
+  </P>
+  <script>
+    function myFunction() {
+      var txt;
+      var r = confirm("Click Ok to confirm the cancellation");
+      if (r == true) {
+        action = "{% url 'cancel' %}"
+      } else {
+        action = "{% url 'mypage' %}"
+      }
+      document.getElementById("apt").innerHTML = txt;
+    }
+    </script>
+
+  </div>
   <!---<var>x</var>=1--->
   <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h3>Appointments</h3>

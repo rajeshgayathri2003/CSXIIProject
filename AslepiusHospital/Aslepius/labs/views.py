@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
 from labs.models import Labs
-from django.core.mail import send_mail
 from labs.models import Labs_payment
+from dept import views as deptviews
+from dept.models import Departments
+from django.core.mail import send_mail
 from login import models as loginmodels
 from appointment import models as aptmodels
+from django.contrib import messages
 # Create your views here.
 
 def tests(request):
@@ -143,7 +146,6 @@ def booking(request):
 def payment(request):
     if request.method == "POST":
         fname = request.POST['firstname']
-        patientID = request.POST['patientID']
         email = request.POST['email']
         add = request.POST['address']
         city = request.POST['city']
@@ -157,9 +159,8 @@ def payment(request):
         expiry_year = request.POST['expyear']
         cvv = request.POST['cvv']
         R = Labs_payment()
+        R.patientID = request.user
         R.fname=fname
-        R.patientID = patientID
-        R.email=email
         R.Add=add
         R.city=city
         R.testname=testname
@@ -175,18 +176,28 @@ def payment(request):
         body = 'Dear {0},\nYour {1} test has been succsessfully booked\n Regards,\nTeam Aselpius'.format(fname, testname)
         send_mail('Diagnostic test payed', body,
                   'aslepius9@gmail.com', [request.user.email, ], fail_silently=False)
-        return render(request, 'labs/redirect.html')
+        details_lst = loginmodels.Register.objects.filter(email=request.user.id)
+        appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
+        labs_lst = Labs_payment.objects.filter(patientID=request.user.id, )
+        return render(request, 'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
 
-def redirect(request):
-    return render(request, 'labs/redirect.html')
 
-def redirect1(request):
-    username = request.user.username
-    details_lst = loginmodels.Register.objects.filter(email=username)
-    appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
-    test_lst = Labs_payment.objects.filter(patientID=request.user.id)
-    return render(request, 'mypage/myhomepage.html',{'t_lst': test_lst,'d_lst':details_lst, 'a_lst': appointment_lst})
 
+def confirm(request):
+    if request.method == "POST":
+        bookingID = request.POST.get('bookingID')
+        obj_delete = Labs_payment.objects.filter(bookingID= bookingID)
+        l_dict = {'bookingID': obj_delete}
+    return render(request, 'labs/confirmcancel.html', l_dict)
+
+'''This function enables the patient to cancel the test'''
+def cancel(request):
+    if request.method == "POST":
+        bookingID = request.POST.get('bookingID')
+        obj_delete = models.Labs_payment.objects.get(bookingID= bookingID)
+        obj_delete.delete()
+        print("SUCCESS")
+        return render(request, 'labs/cancellab.html')
 
 
 
