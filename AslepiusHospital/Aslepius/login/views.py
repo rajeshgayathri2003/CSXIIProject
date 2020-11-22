@@ -23,7 +23,7 @@ def generatepasswd():
     rannum2 = randint(97,122)
     rannumu1 = randint(65,90)
     Lspecchar=[",","<",">",".","?","/","\"","\'",":",";","[","]","{","]","\\","|","-","_","+","=","!","@","#","$","%","^","&","*","(",")"]
-    rannumspec=randint(1,len(Lspecchar))
+    rannumspec=randint(0,len(Lspecchar)-1)
     ualpha=""
     lalpha=""
     specchar=""
