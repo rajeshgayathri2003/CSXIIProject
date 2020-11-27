@@ -8,7 +8,7 @@ class Labs(models.Model):
     testprice = models.IntegerField()
 
 class Labs_payment(models.Model):
-    bookingID = models.AutoField(primary_key = True,)
+    bookingID = models.AutoField(primary_key = True)
     patientID = models.ForeignKey(User, on_delete = models.CASCADE, )
     fname = models.CharField(max_length=50)
     email = models.EmailField()
