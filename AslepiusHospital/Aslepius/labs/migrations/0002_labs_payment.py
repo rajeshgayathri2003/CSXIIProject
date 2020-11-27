@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Labs_payment',
             fields=[
-                ('bookingID', models.AutoField(primary_key = True,)),
                 ('fname', models.CharField(max_length=50)),
                 ('patientID', models.IntegerField(primary_key=True, serialize=False)),
                 ('email', models.EmailField(max_length=254)),
