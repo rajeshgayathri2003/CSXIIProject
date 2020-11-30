@@ -35,7 +35,7 @@
         <p id="mssg">Are you sure you want to cancel the test?
         </p>
         {% for b in bookingID %}
-        <form method="POST" action="{% url 'cancel' %}">
+        <form method="POST" action="{% url 'labs_cancel' %}">
             {% csrf_token %}
             <input name ="choice" type="hidden" value="YES">
             <input name = "bookingID" type ="hidden" value= {{b.bookingID}}>

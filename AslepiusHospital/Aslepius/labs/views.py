@@ -183,18 +183,20 @@ def payment(request):
 
 
 
-def confirm(request):
+def labs_confirm(request):
     if request.method == "POST":
         bookingID = request.POST.get('bookingID')
+        print('1',bookingID)
         obj_delete = Labs_payment.objects.filter(bookingID= bookingID)
         l_dict = {'bookingID': obj_delete}
+        print(l_dict)
     return render(request, 'labs/confirmcancel.html', l_dict)
 
 '''This function enables the patient to cancel the test'''
-def cancel(request):
+def labs_cancel(request):
     if request.method == "POST":
         bookingID = request.POST.get('bookingID')
-        obj_delete = models.Labs_payment.objects.get(bookingID= bookingID)
+        obj_delete = Labs_payment.objects.get(bookingID= bookingID)
         obj_delete.delete()
         print("SUCCESS")
         return render(request, 'labs/cancellab.html')

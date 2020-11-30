@@ -6,10 +6,14 @@ from appointment import views as aptviews
 
 
 
-urlpatterns = [path('login',views.login, name='login'),path('registration', views.registration, name='registration'),
-               path('mypage', views.mypage, name='mypage'),path('logout', views.logout, name='logout'),
+urlpatterns = [path('login',views.login, name='login'),
+               path('registration', views.registration, name='registration'),
+               path('mypage', views.mypage, name='mypage'),
+               path('logout', views.logout, name='logout'),
                path('updatepasswdlogin', views.updatepasswdlogin, name='updatepasswdlogin'),
-               path('cancel', aptviews.cancel, name='cancel')]
+               ]
+#path('cancel', aptviews.cancel, name='cancel'),
+#path('confirm', aptviews.confirm, name='confirm')
 '''
 urlpatterns = [path('',views.FrontScreen,name='FrontScreen'),path('login',views.login, name='login'),
                path('departments', views.dept, name='departments'),

@@ -54,6 +54,7 @@ def confirm(request):
         aptid = request.POST['aptid']
         obj_delete = models.Appointment.objects.filter(aptid = aptid)
         a_dict = {'aptid' : obj_delete}
+        print(a_dict)
     return render(request, 'appointment/confirmcancel.html', a_dict)
 
 '''This function enables the patient to cancel the appointment'''        
