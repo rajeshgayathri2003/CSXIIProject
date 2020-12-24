@@ -176,4 +176,30 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+'''This function enables the user to reset password'''
+def forgotpassword(request):
+    if request.method == 'GET':
+        return render(request,'login/forgotpassword.html')
+    else:
+        newpasswd = generatepasswd()
+        body = 'Please use the above password {} to login to Aslepius'.format(newpasswd)
+        useremail = request.POST['useremail']
+        lst = User.objects.filter()
+        flag = 0
+        for i in lst:
+            if i.email == useremail:
+                flag = 1
+        if not flag:
+            messages.info(request,'Email does not exist')
+            return redirect('login')
+        else:
+            user_lst = User.objects.get(email = useremail)
+            user_lst.set_password(newpasswd)
+            user_lst.save()
+            send_mail('Reset Password',
+            body,'aslepius9@gmail.com',
+            [useremail],
+            fail_silently= False)
+            messages.info(request,'Please check your registered email address')
+        return render(request,'login/login.html')
 # Create your views here.

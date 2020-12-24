@@ -25,4 +25,8 @@ class Temporary_passwd(models.Model):
     email= models.EmailField(primary_key=True,)
     temppasswd= models.CharField(max_length=8)
 
+
+class Forgot_Password(models.Model):
+    email = models.EmailField(primary_key = True)
+    otp = models.BigIntegerField()
 # Create your models here.

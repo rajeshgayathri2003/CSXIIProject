@@ -13,6 +13,7 @@ from django.contrib import messages
 def bookappointment(request):
     if request.method == "POST":
         doc_id = request.POST['docid']
+        print(doc_id)
         docobj = Departments.objects.get(doctorID = doc_id)
         time_details = models.Availability.objects.get(doctorID = doc_id)
         doc_dict = {'docobject':docobj, 'time': time_details}

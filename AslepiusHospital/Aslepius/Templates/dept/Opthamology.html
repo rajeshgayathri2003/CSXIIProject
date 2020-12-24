@@ -16,8 +16,12 @@
           <h3 class="card-title" id="doctor">Dr. Neha Mishra</h3>
           <p class="card-text" id="post">Senior Consultant (19 years)</p>
           <p class="card-text" id="degree">MBBS, MD, FAICO</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+          <form action="#" method = "POST" >
+            {% csrf_token %}
+            <input type="hidden" id="docid" name="docid" value = {{object2.doctorID}}>
+          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+            Book Appointment
+            </button></form>
         </div>
       </div>
       <div class="card" style="margin-left: 15%">
@@ -26,8 +30,12 @@
           <h3 class="card-title" id="doctor">Dr. Ranjit Mohan</h3>
           <p class="card-text" id="post">Consultant (12 years)</p>
           <p class="card-text" id="degree">MBBS,MS(Ophthamology)</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+          <form action="#" method = "POST" >
+            {% csrf_token %}
+            <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
+          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+            Book Appointment
+            </button></form>
         </div>
       </div>
       <div class="card" style="margin-right: 10%">
@@ -36,8 +44,12 @@
           <h5 class="card-title" id="doctor">Dr. Farhan Fazal</h5>
           <p class="card-text" id="post">Visiting Consultant (7 years)</p>
           <p class="card-text" id="degree">MBBS,DNB,FRCS</p>
-          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
+          <form action="#" method = "POST" >
+            {% csrf_token %}
+            <input type="hidden" id="docid" name="docid" value = {{object1.doctorID}}>
+          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+            Book Appointment
+            </button></form>
         </div>
       </div>
     </div>

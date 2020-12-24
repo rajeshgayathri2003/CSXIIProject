@@ -11,6 +11,7 @@ urlpatterns = [path('login',views.login, name='login'),
                path('mypage', views.mypage, name='mypage'),
                path('logout', views.logout, name='logout'),
                path('updatepasswdlogin', views.updatepasswdlogin, name='updatepasswdlogin'),
+               path('forgotpassword', views.forgotpassword, name='forgotpassword')
                ]
 #path('cancel', aptviews.cancel, name='cancel'),
 #path('confirm', aptviews.confirm, name='confirm')

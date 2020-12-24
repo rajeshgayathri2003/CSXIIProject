@@ -152,8 +152,7 @@
              <div> <label for="password"> Password </label>
                     <input type="password" required name="password" id="password" class="input-field" />
              </div>
-              <div> <label for="remember password">Remember Password</label>
-                    <input type="checkbox" name="remember password" class="check-box" id="remember password" />
+              <div> <label for="remember password"><a href="{% url 'forgotpassword' %}">Forgot Password</a></label>
               </div>
 
               <div> <button formaction="{% url 'mypage' %}" type="submit" class="submit-btn">Login</button>
