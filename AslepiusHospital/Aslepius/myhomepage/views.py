@@ -21,8 +21,8 @@ def updatepasswd(request):
                 user_lst.set_password(newpasswd)
                 user_lst.save()
                 #print("Hello")
-                messages.info(request, 'Update Successful')
-                return redirect('updatepasswd')
+                messages.info(request, 'Kindly login with your new password')
+                return redirect('login')  
             else:
                 messages.info(request, "New passwords don't match")
                 return redirect('updatepasswd')
@@ -37,23 +37,28 @@ def updateprofile(request):
     username=request.user.username
     userid = request.user.id
     if request.method=="POST":
-        fname = request.POST['fname']
-        lname = request.POST['lname']
-        email = request.POST['email']
-        #dob = request.POST['dob']
-        mobile = request.POST['mobile']
-        Add1 = request.POST['Add1']
-        Add2 = request.POST['Add2']
-        Add3 = request.POST['Add3']
-        city = request.POST['city']
-        state = request.POST['state']
-        pincode = request.POST['pincode']
-        user_lst= User.objects.filter(username=username)
-        user_lst.update(first_name=fname, last_name=lname, username=email, email=email)
-        details_lst = loginmodels.Register.objects.filter(email=userid)
-        details_lst.update(mobile=mobile, Add1=Add1, Add2= Add2, Add3=Add3, city=city, state=state, pincode=pincode)
-        messages.info(request,'Update Successful')
-        return redirect('updateprofile')
+        try:
+            fname = request.POST['fname']
+            lname = request.POST['lname']
+            email = request.POST['email']
+            #dob = request.POST['dob']
+            mobile = request.POST['mobile']
+            Add1 = request.POST['Add1']
+            Add2 = request.POST['Add2']
+            Add3 = request.POST['Add3']
+            city = request.POST['city']
+            state = request.POST['state']
+            pincode = request.POST['pincode']
+            user_lst= User.objects.filter(username=username)
+            user_lst.update(first_name=fname, last_name=lname, username=email, email=email)
+            details_lst = loginmodels.Register.objects.filter(email=userid)
+            details_lst.update(mobile=mobile, Add1=Add1, Add2= Add2, Add3=Add3, city=city, state=state, pincode=pincode)
+            messages.info(request,'Update Successful')
+            return redirect('updateprofile')
+        except:
+            messages.info(request,'Update not possible')
+            return redirect('updateprofile')
+           
     else:
         details_lst= loginmodels.Register.objects.filter(email=userid)
         print(details_lst)

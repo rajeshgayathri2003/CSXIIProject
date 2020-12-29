@@ -13,7 +13,6 @@ from django.contrib import messages
 def bookappointment(request):
     if request.method == "POST":
         doc_id = request.POST['docid']
-        print(doc_id)
         docobj = Departments.objects.get(doctorID = doc_id)
         time_details = models.Availability.objects.get(doctorID = doc_id)
         doc_dict = {'docobject':docobj, 'time': time_details}
@@ -35,16 +34,20 @@ def booknow(request):
             messages.info(request,'Doctor is unavailable at the requested time. Please try another day')
             return redirect('dept')
         else:
-            B = models.Appointment()
-            B.date = date
-            B.doctorID = Departments.objects.get(doctorID = docID)
-            B.patientID = request.user
-            B.time = time
-            B.save()
-            body = 'Dear {0},\nYour appointment with {1} has been confirmed on {2} at {3}\nPlease be on time.\n Regards,\nTeam Aselpius'.format(request.user.first_name, Departments.objects.get(doctorID = docID).docname, date, time)
-            send_mail('Appointment Booked', body,
-            'aslepius9@gmail.com', [request.user.email,], fail_silently = False)
-            return render(request, 'appointment/appointmentthankyou.html')
+            try:
+                B = models.Appointment()
+                B.date = date
+                B.doctorID = Departments.objects.get(doctorID = docID)
+                B.patientID = request.user
+                B.time = time
+                B.save()
+                body = 'Dear {0},\nYour appointment with {1} has been confirmed on {2} at {3}\nPlease be on time.\n Regards,\nTeam Aselpius'.format(request.user.first_name, Departments.objects.get(doctorID = docID).docname, date, time)
+                send_mail('Appointment Booked', body,
+                'aslepius9@gmail.com', [request.user.email,], fail_silently = False)
+                return render(request, 'appointment/appointmentthankyou.html')
+            except:
+                messages.info('Booking Unsuccessful. Please try again')
+                return redirect('dept')
     else:
         return render(request, 'appointment/bookapt.html')
 

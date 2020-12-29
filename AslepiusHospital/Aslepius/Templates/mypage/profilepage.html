@@ -141,6 +141,16 @@
             outline: none;
             border-radius: 30px;
         }
+
+        #btn{
+                font-family: Open Sans;
+                font-size: 15px;
+            }
+
+        #message{
+            font-family: Arial, Helvetica, sans-serif;
+            font: size 30;
+        }
     </style>
 </head>
 <body>
@@ -166,30 +176,30 @@
             <form class="forms" action="#" method="POST">
                 {% csrf_token %}
                 {% if user.is_authenticated %}
-                <div><label class="label" for="fname"> First Name</label> <input value={{user.first_name}} maxlength="50" id="fname" required name="fname" type="text" class="input-field" /></div>
-                <div><label class="label" for="lname"> Last Name</label> <input value={{user.last_name}} maxlength="50" id="lname" required name="lname" type="text" class="input-field" /></div>
-                <div><label class="label" for="email">Email Address</label> <input value={{user.email}} id="email" required name="email" type="email" class="input-field" /></div>
+                <div><label id= "btn" class="label" for="fname"> First Name</label> <input value={{user.first_name}} maxlength="50" id="fname" required name="fname" type="text" class="input-field" /></div>
+                <div><label id= "btn" class="label" for="lname"> Last Name</label> <input value={{user.last_name}} maxlength="50" id="lname" required name="lname" type="text" class="input-field" /></div>
+                <div><label class="label" id= "btn" for="email">Email Address</label> <input value={{user.email}} id="email" required name="email" type="email" class="input-field" /></div>
                 {% endif %}
                 {% for d in d_lst %}
-                <div><label class="label" for="dob"> Date of Birth</label> <input value="{{d.dob}}" id="dob" required name="dob" type="text" class="input-field" disabled /></div>
-                <div> <label class="label" for="mobile">Mobile Number</label> <input value={{d.mobile}} id="mobile" required type="tel" name="mobile" class="input-field" /></div>
+                <div><label class="label" id= "btn" for="dob"> Date of Birth</label> <input value="{{d.dob}}" id="dob" required name="dob" type="text" class="input-field" disabled /></div>
+                <div> <label class="label" id= "btn" for="mobile">Mobile Number</label> <input value={{d.mobile}} id="mobile" required type="tel" name="mobile" class="input-field" /></div>
 
 
 </div>
         <div class="form-box-1">
 
-            <div> <label class="label" for="Add1"> Address Line 1</label> <input value="{{d.Add1}}" maxlength="70" id="Add1" required name="Add1" type="text" class="input-field" /></div>
-            <div> <label class="label" for="Add2"> Address Line 2</label> <input value="{{d.Add2}}" maxlength="65" id="Add2" required type="text" name="Add2" class="input-field" /></div>
-            <div> <label class="label" for="Add3"> Address Line 3</label> <input value="{{d.Add3}}" maxlength="65" id="Add3" type="text" name="Add3" required class="input-field" /></div>
-            <div> <label class="label" for="city"> City</label> <input id="city" value={{d.city}} required name="city" type="text" class="input-field" /></div>
-            <div> <label class="label" for="state"> State </label> <input id="state" value={{d.state}} required name="state" type="text" class="input-field" /></div>
-            <div> <label class="label" for="pincode">PIN</label> <input id="pincode" value={{d.pincode}} required name="pincode" type="number" class="input-field" /></div>
-            <div> <button type="submit" class="submit-btn" >UPDATE</button></div>
+            <div> <label class="label" id= "btn" for="Add1"> Address Line 1</label> <input value="{{d.Add1}}" maxlength="70" id="Add1" required name="Add1" type="text" class="input-field" /></div>
+            <div> <label class="label" id= "btn" for="Add2"> Address Line 2</label> <input value="{{d.Add2}}" maxlength="65" id="Add2" required type="text" name="Add2" class="input-field" /></div>
+            <div> <label class="label" id= "btn" for="Add3"> Address Line 3</label> <input value="{{d.Add3}}" maxlength="65" id="Add3" type="text" name="Add3" required class="input-field" /></div>
+            <div> <label class="label" id= "btn" for="city"> City</label> <input id="city" value={{d.city}} required name="city" type="text" class="input-field" /></div>
+            <div> <label class="label" id= "btn" for="state"> State </label> <input id="state" value={{d.state}} required name="state" type="text" class="input-field" /></div>
+            <div> <label class="label" id= "btn" for="pincode">PIN</label> <input id="pincode" value={{d.pincode}} required name="pincode" type="number" class="input-field" /></div>
+            <div> <button type="submit" id= "btn" class="submit-btn" >UPDATE</button></div>
             {% endfor %}
             <div>
                 <div>
                     {% for message in messages%}
-                    <h5><I>{{message}}</I> </h5>
+                    <P id="message"><I>{{message}}</I> </P>
                 </div> {% endfor %}
             </div>
             </form>

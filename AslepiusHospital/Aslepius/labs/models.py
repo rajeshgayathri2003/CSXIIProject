@@ -19,7 +19,7 @@ class Labs_payment(models.Model):
     state = models.CharField(max_length=30)
     pincode = models.IntegerField()
     cardname = models.CharField(max_length=30)
-    cardnumber = models.IntegerField()
+    cardnumber = models.BigIntegerField()
     exp_month = models.CharField(max_length=30)
     exp_year = models.IntegerField()
     cvv = models.IntegerField()

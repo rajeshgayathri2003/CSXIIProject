@@ -145,42 +145,48 @@ def booking(request):
 
 def payment(request):
     if request.method == "POST":
-        fname = request.POST['firstname']
-        email = request.POST['email']
-        add = request.POST['address']
-        city = request.POST['city']
-        testname = request.POST.get('testname')
-        price = request.POST['price']
-        state = request.POST['state']
-        pincode = request.POST['Pincode']
-        cardname = request.POST['cardname']
-        creditcard_num = request.POST['cardnumber']
-        expiry_month = request.POST['expmonth']
-        expiry_year = request.POST['expyear']
-        cvv = request.POST['cvv']
-        R = Labs_payment()
-        R.patientID = request.user
-        R.fname=fname
-        R.Add=add
-        R.city=city
-        R.testname=testname
-        R.price=price
-        R.state=state
-        R.pincode=pincode
-        R.cardname=cardname
-        R.cardnumber=creditcard_num
-        R.exp_month=expiry_month
-        R.exp_year=expiry_year
-        R.cvv= cvv
-        R.save()
-        body = 'Dear {0},\nYour {1} test has been succsessfully booked\n Regards,\nTeam Aselpius'.format(fname, testname)
-        send_mail('Diagnostic test payed', body,
+        try:
+            fname = request.POST['firstname']
+            email = request.POST['email']
+            add = request.POST['address']
+            city = request.POST['city']
+            testname = request.POST.get('testname')
+            price = request.POST['price']
+            state = request.POST['state']
+            pincode = request.POST['Pincode']
+            cardname = request.POST['cardname']
+            creditcard_num = request.POST['cardnumber']
+            expiry_month = request.POST['expmonth']
+            expiry_year = request.POST['expyear']
+            cvv = request.POST['cvv']
+            R = Labs_payment()
+            R.patientID = request.user
+            R.fname=fname
+            R.Add=add
+            R.city=city
+            R.testname=testname
+            R.price=price
+            R.state=state
+            R.pincode=pincode
+            R.cardname=cardname
+            R.cardnumber=creditcard_num
+            R.exp_month=expiry_month
+            R.exp_year=expiry_year
+            R.cvv= cvv
+            R.save()
+            body = 'Dear {0},\nYour {1} test has been succsessfully booked\n Regards,\nTeam Aselpius'.format(fname, testname)
+            send_mail('Diagnostic test payed', body,
                   'aslepius9@gmail.com', [request.user.email, ], fail_silently=False)
-        details_lst = loginmodels.Register.objects.filter(email=request.user.id)
-        appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
-        labs_lst = Labs_payment.objects.filter(patientID=request.user.id, )
-        return render(request, 'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
-
+            details_lst = loginmodels.Register.objects.filter(email=request.user.id)
+            appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
+            labs_lst = Labs_payment.objects.filter(patientID=request.user.id, )
+            return render(request, 'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
+        except:
+            messages.info(request,'Payment unsuccessful. Please try again later')
+            return redirect('tests')
+    else:
+        return render(request, 'labs/payment.html')
+            
 
 
 def labs_confirm(request):
@@ -200,6 +206,8 @@ def labs_cancel(request):
         obj_delete.delete()
         print("SUCCESS")
         return render(request, 'labs/cancellab.html')
+    else:
+        return render(request, 'labs/labs1.html')
 
 
 

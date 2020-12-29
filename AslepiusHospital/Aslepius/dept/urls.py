@@ -20,7 +20,7 @@ urlpatterns =[path('departments', views.dept, name='departments'),
                path('opthomology', views.opthomology, name='opthomology'),
                path('paediatrics',views.paediatrics, name='paediatrics'),
                path('orthopaedics',views.orthopaedics, name='orthopaedics'),
-               path('psychiatry',views.psychiatry, name='v'),
+               path('psychiatry',views.psychiatry, name='psychiatry'),
                path('pulmonology', views.pulmonology, name='pulmonology'),
                path('login', loginviews.login, name='login'),
                path('bookappointment', aptviews.bookappointment, name= 'bookappointment')
