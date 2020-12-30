@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Aclonica&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
     <link href="{% static '/static/images/e.jpg' %}">
     <link href="{% static '/static/images/d.png' %}">
      <link href="{% static '/static/images/c.png' %}">
@@ -27,23 +28,19 @@
     top: 18px;
     left: 10px;
     font-size: 2.5rem;
-    color: #fcedd8;
-    font-family: 'Niconne', cursive;
-    text-shadow: 5px 5px 0px #eb452b,
-                  10px 10px 0px #efa032,
-                  15px 15px 0px #46b59b;
+    color: #4f2cec;
+    font-family: 'Redressed';
+    
 }
-
 .menubar {
   list-style-type: none;
   margin: 0;
   padding: 8px;
   overflow: hidden;
-  background-color: Aquamarine;
+  background-color:  rgb(161, 197, 243);
   border: 2px solid blue;
 }
 
-}
 .active, .menu-bar ul li:hover, .sub-menu-1:hover .dropbtn
 {background: lightskyblue;
  border-radius: 3px;}
@@ -129,13 +126,13 @@ ul.a {
 
 /* Contains Info */
 .box {
-  background-color: #00FFFF;
+  background-color: #6ee2ff;
   width: 80%;
   padding: 20px;
   font-family: 'Aclonica', sans-serif;
   box-shadow: 10px 10px 5px grey;
 }
-body {background-color: #00BFFF;}
+body {background-color: #adeaff;}
 
 #BLOG{
   font-family: 'Permanent Marker', cursive;
@@ -175,7 +172,7 @@ h5{
 <body>
 <div class="header">
   <img style="display: inline;" src="/static/images/hosp.png" alt="logo" />
-  <h1 style="display: inline;">Aslepius</h1>
+  <h1 style="display: inline;">ASLEPIUS HOSPITALS</h1>
 </div>
 
 <br><br>
@@ -230,12 +227,12 @@ h5{
   <div class="side">
    <a name="Blogs"> <h2 id="BLOG"><u>Blog: Find the latest blogs from our experts.</u></h2><a>
        <div class="box" style="height:200px;">
-           <a href="{% url 'covid' %}">COVID-19 Risks:All your questions answered.</a><br><br>
-           <a href="{% url 'heart' %}">Heart Healty Diet:How to unclog your arteries.</a><br><br>
-           <a href="{% url 'Brain_Tumour' %}">All about Pediatric Brain Tumours.</a><br><br>
-           <a href="{% url 'KidneyPain'%}">Kidney pain VS Back Pain:How to differentiate?</a><br><br>
-           <a href="{% url 'BabyBlue' %}">What is Blue Baby Syndrome?</a><br><br>
-           <a href="{% url 'KidneyCare' %}">All you need to now about Kidney Cancer</a>
+           <a style='text-decoration: none; color: rgb(73, 51, 223);' href="{% url 'covid' %}">COVID-19 Risks:All your questions answered.</a><br><br>
+           <a style='text-decoration: none; color: rgb(73, 51, 223)' href="{% url 'heart' %}">Heart Healty Diet:How to unclog your arteries.</a><br><br>
+           <a style='text-decoration: none; color: rgb(73, 51, 223);' href="{% url 'Brain_Tumour' %}">All about Pediatric Brain Tumours.</a><br><br>
+           <a style='text-decoration: none; color: rgb(73, 51, 223);' href="{% url 'KidneyPain'%}">Kidney pain VS Back Pain:How to differentiate?</a><br><br>
+           <a style='text-decoration: none; color: rgb(73, 51, 223);' href="{% url 'BabyBlue' %}">What is Blue Baby Syndrome?</a><br><br>
+           <a style='text-decoration: none; color: rgb(73, 51, 223);'href="{% url 'KidneyCare' %}">All you need to now about Kidney Cancer</a>
        </div>
     <p></p>
     <h3 id="WHY"><u>Why choose Aslepius?</u></h3>

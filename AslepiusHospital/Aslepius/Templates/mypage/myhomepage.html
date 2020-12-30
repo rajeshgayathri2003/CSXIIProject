@@ -2,6 +2,8 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@400;700&family=Redressed&display=swap" rel="stylesheet">
 <style>
 .header img {
   float: left;
@@ -15,22 +17,20 @@
     top: 18px;
     left: 10px;
     font-size: 2.5rem;
-    color: #fcedd8;
-    font-family: 'Niconne', cursive;
-    text-shadow: 5px 5px 0px #eb452b,
-                  10px 10px 0px #efa032,
-                  15px 15px 0px #46b59b;
+    color: #4f2cec;
+    font-family: 'Redressed';
+    
 }
 .menubar {
   list-style-type: none;
   margin: 0;
   padding: 8px;
   overflow: hidden;
-  background-color: Aquamarine;
+  background-color: rgb(161, 197, 243);
   border: 2px solid blue;
 }
 .active, .menu-bar ul li:hover, .sub-menu-1:hover .dropbtn
-{background: lightskyblue;
+{background: aliceblue;
  border-radius: 3px;}
  .sub-menu-1{display: none;}
  .sub-menu-1 a{display: block; color: black;}
@@ -51,7 +51,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .sub-menu-1:hover .dropbtn {
-  background-color: lightskyblue;
+  background-color: aliceblue;
 }
 
 li.sub-menu-1 {
@@ -61,7 +61,7 @@ li.sub-menu-1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: Aquamarine;
+  background-color: rgb(161, 197, 243);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
@@ -75,7 +75,7 @@ li.sub-menu-1 {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: lightskyblue;}
+.dropdown-content a:hover {background-color: aliceblue;}
 
 .sub-menu-1:hover .dropdown-content {
   display: block;
@@ -83,7 +83,7 @@ li.sub-menu-1 {
 .profile-box
 {width: 400px;
  height: 600px;
- background-color:Aquamarine;
+ background-color: rgb(161, 197, 243);
  padding: 30px;
  margin: 18px;
  border-radius: 25px;
@@ -93,12 +93,11 @@ li.sub-menu-1 {
  float: left;
  }
 
- .apt-box{width: 300px;
- height: 600px;
- background-color: Aquamarine;
+ .apt-box{width: 250px;
+ height: 300px;
+ background-color: rgb(161, 197, 243);
  padding: 30px;
  margin: 18px;
- border-radius: 25px;
  font-family: 'Niconne', cursive;
  font-size: 14px;
  box-shadow: 10px 10px 5px grey;
@@ -109,12 +108,16 @@ li.sub-menu-1 {
 
  hr.line
  {border-top: 1px dodgerblue;}
+ #body
+ {
+   background-color: aliceblue;
+ }
 </style>
 </head>
-<body bgcolor="00BFFF">
+<body id = 'body'>
 <div class="header">
   <img style="display: inline;" src="/static/images/hosp.png" alt="logo" />
-  <h1 style="display: inline;">Aslepius</h1>
+  <h1 style="display: inline;">ASLEPIUS HOSPITALS</h1>
 </div>
 
 <br><br>
@@ -140,7 +143,7 @@ li.sub-menu-1 {
 
 </ul>
 {% if user.is_authenticated %}
-<h3>Hello {{user.first_name}}</h3>
+<h3 style="font-family: Redressed; font-size: 30px ;">Hello {{user.first_name}}</h3>
 <div class="profile-box"><P style="color: white;">
 
   <div>First Name<br>{{user.first_name}}<hr class="line"></div>
@@ -159,6 +162,7 @@ li.sub-menu-1 {
   
   <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h3>Tests</h3>
+    {% if l_lst %}
     {% for l in l_lst %}
     <div>{{l.testname}}</div>
     <form method="POST" action="{% url 'labs_confirm' %}">
@@ -168,12 +172,16 @@ li.sub-menu-1 {
     </form>
     <hr class="line">
     {% endfor %}
+    {% else %}
+    <P>No Tests Booked</P>
+    {% endif %}
   </P>
   
 
   </div>
   <div class="apt-box"> <P  id ="apt" style="color: white;">
-    <h3>Appointments</h3>
+    <h2>Appointments</h2>
+    {% if a_lst %}
     {% for a in a_lst %}
     <div>{{a.doctorID.docname}}</div>
     <div>{{a.doctorID.specialisation}}</div>
@@ -186,7 +194,9 @@ li.sub-menu-1 {
     </form>
     <hr class="line">
     {% endfor %}
-
+    {% else %}
+    <P>No Appointments Booked</P>
+    {% endif %}
   </P>
   
 
