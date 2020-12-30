@@ -16,12 +16,8 @@
           <h3 class="card-title" id="doc">Dr. Ilin Kinimi</h3>
           <p class="card-text" id="pt">Paediatric Pulmonologist (20 years)</p>
           <p class="card-text" id="deg">MD (Paediatrics) Clinical Fellowship-Paediatric Pulmonology</p>
-          <form action="#" method = "POST" >
-            {% csrf_token %}
-            <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
-          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            Book Appointment
-            </button></form>
+          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
         </div>
       </div>
       <div class="card" style="margin-left: 15%">
@@ -30,12 +26,8 @@
           <h3 class="card-title" id="doc">Dr. Padma Sundaram</h3>
           <p class="card-text" id="pt">Consultant-respiratory and Sleep medicine (28 years)</p>
           <p class="card-text" id="degree">MBBS,DNB (Respiratory Medicine), MD(TB & CHEST)</p>
-          <form action="#" method = "POST" >
-            {% csrf_token %}
-            <input type="hidden" id="docid" name="docid" value = {{object3.doctorID}}>
-          <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-            Book Appointment
-            </button></form>
+          <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+            <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
         </div>
       </div>
     </div><br><br><br><br>
@@ -46,12 +38,8 @@
             <h3 class="card-title" id="doctor">Dr. Elakya</h3>
             <p class="card-text" id="post">Consultant (5 years)</p>
             <p class="card-text" id="degree">MBBS, MD (PULMO)</p>
-            <form action="#" method = "POST" >
-              {% csrf_token %}
-              <input type="hidden" id="docid" name="docid" value = {{object1.doctorID}}>
-            <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-              Book Appointment
-              </button></form>
+            <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+              <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
           </div>
         </div>
         <div class="card" style="margin-left: 28%">
@@ -60,12 +48,8 @@
             <h3 class="card-title" id="doctor">Dr. Davindar Kundra</h3>
             <p class="card-text" id="post">Consultant (9 years)</p>
             <p class="card-text" id="degree">MBBS ,DNB(Respiratory Medicine)</p>
-            <form action="#" method = "POST" >
-              {% csrf_token %}
-              <input type="hidden" id="docid" name="docid" value = {{object2.doctorID}}>
-            <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
-              Book Appointment
-              </button></form>
+            <button type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
+              <a href="{% url 'bookappointment' %}">Book Appointment</a></input>
           </div>
         </div>
       </div>

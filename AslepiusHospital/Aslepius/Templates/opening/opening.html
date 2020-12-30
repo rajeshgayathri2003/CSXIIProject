@@ -10,38 +10,62 @@
     <link href="https://fonts.googleapis.com/css?family=Aclonica&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="{% static '/static/images/b.png' %}">
-    <link href="{% static '/static/images/c.png' %}">
+    <link href="{% static '/static/images/e.jpg' %}">
+    <link href="{% static '/static/images/d.png' %}">
      <link href="{% static '/static/images/c.png' %}">
     <style>
+
+.header img {
+  float: left;
+  width: 70px;
+  height: 70px;
+  background: #555;
+}
+
+.header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+    font-size: 2.5rem;
+    color: #fcedd8;
+    font-family: 'Niconne', cursive;
+    text-shadow: 5px 5px 0px #eb452b,
+                  10px 10px 0px #efa032,
+                  15px 15px 0px #46b59b;
+}
 
 .menubar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 8px;
   overflow: hidden;
-  background-color: cornflowerblue;
+  background-color: Aquamarine;
+  border: 2px solid blue;
+}
 
 }
 .active, .menu-bar ul li:hover, .sub-menu-1:hover .dropbtn
-{background: whitesmoke;
+{background: lightskyblue;
  border-radius: 3px;}
  .sub-menu-1{display: none;}
  .sub-menu-1 a{display: block; color: black;}
- .sub-menu-1 a:hover{background:whitesmoke;}
+ .sub-menu-1 a:hover{background:lightskyblue;}
 
 li{float:left;}
 
 li a, .dropbtn {
   display: inline-block;
   color: black;
+  font-family: 'Niconne', cursive;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  text-shadow: 1px 1px 1px #00CED1;
+
 }
 
 li a:hover, .sub-menu-1:hover .dropbtn {
-  background-color: whitesmoke;
+  background-color: lightskyblue;
 }
 
 li.sub-menu-1 {
@@ -96,14 +120,22 @@ li.sub-menu-1 {
   padding: 18px;
 }
 
+ul.a {
+  list-style-position: outside;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
 /* Contains Info */
 .box {
-  background-color: #aaa;
+  background-color: #00FFFF;
   width: 80%;
   padding: 20px;
   font-family: 'Aclonica', sans-serif;
+  box-shadow: 10px 10px 5px grey;
 }
-body {background-color: cornflowerblue;}
+body {background-color: #00BFFF;}
 
 #BLOG{
   font-family: 'Permanent Marker', cursive;
@@ -132,7 +164,7 @@ h5{
 
 #HELPLINE{
   color: red;
-  font-family: 'Sigmar One', cursive;
+  font-family: 'Niconne', cursive;
 
 }
 
@@ -141,12 +173,19 @@ h5{
 </style>
 </head>
 <body>
+<div class="header">
+  <img style="display: inline;" src="/static/images/hosp.png" alt="logo" />
+  <h1 style="display: inline;">Aslepius</h1>
+</div>
+
+<br><br>
+
 {%csrf_token%}
 <div class="container">
- <ul class="menubar">
-  <li class="active"><a href="#home">HOME</a></li>
-  <li><a href="{% url 'login' %}"> LOGIN/<br />REGISTER</a></li>
-  <li class="sub-menu-1">
+  <ul class="menubar">
+    <li class="active"><a href="#home">HOME</a></li>
+    <li><a href="{% url 'login' %}"> LOGIN/<br />REGISTER</a></li>
+    <li class="sub-menu-1">
     <a href="{% url 'aboutus' %}" class="dropbtn">ABOUT</a>
     <!---<div class="dropdown-content">
       <a href="#">Mission</a>
@@ -179,25 +218,27 @@ h5{
   <li> <a href="{%url 'vaccines' %}">VACCINES </a> </li>
   <!----<li> <a href="#organdonation"> PLEGDE YOUR <br /> ORGANS</a></li>--->
   <li> <a href="{%url 'faq'%}">FAQ</a></li>
-  <li> <a href="{%url 'contact' %}">CONTACT</a></li></div>
+  <li> <a href="{%url 'contact' %}">CONTACT</a></li>
 </div>
+
 <div class="container">
   <img class="mySlides" src="/static/images/c.png" width="960" height="540" style="width:100%;">
-  <img class="mySlides" src="/static/images/b.png" width="960" height="540" style="width:100%;">
-  <img class="mySlides" src="/static/images/d.png" width="960" height="540" style="width:100%;">
+  <img class="mySlides" src="/static/images/s.jpg" width="960" height="540" style="width:100%;">
+  <img class="mySlides" src="/static/images/q.jpg" width="960" height="540" style="width:100%;">
 </div>
 <div class="row">
   <div class="side">
-   <a name="Blogs"> <h2 id="BLOG">Blog: Find the latest blogs from our experts.</h2><a>
+   <a name="Blogs"> <h2 id="BLOG"><u>Blog: Find the latest blogs from our experts.</u></h2><a>
        <div class="box" style="height:200px;">
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'covid' %}">*COVID-19 Risks:All your questions answered.</a><br><br>
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'heart' %}">*Heart Healty Diet:How to unclog your arteries.</a><br><br>
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'Brain_Tumour' %}">*All about Pediatric Brain Tumours.</a><br><br>
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'KidneyPain'%}">*Kidney pain VS Back Pain:How to differentiate?</a><br><br>
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'BabyBlue' %}">*What is Blue Baby Syndrome?</a><br><br>
-           <a style='text-decoration: None; color: rgb(41, 14, 211);' href="{% url 'KidneyCare' %}">*All you need to now about Kidney Cancer</a></div>
+           <a href="{% url 'covid' %}">COVID-19 Risks:All your questions answered.</a><br><br>
+           <a href="{% url 'heart' %}">Heart Healty Diet:How to unclog your arteries.</a><br><br>
+           <a href="{% url 'Brain_Tumour' %}">All about Pediatric Brain Tumours.</a><br><br>
+           <a href="{% url 'KidneyPain'%}">Kidney pain VS Back Pain:How to differentiate?</a><br><br>
+           <a href="{% url 'BabyBlue' %}">What is Blue Baby Syndrome?</a><br><br>
+           <a href="{% url 'KidneyCare' %}">All you need to now about Kidney Cancer</a>
+       </div>
     <p></p>
-    <h3 id="WHY">Why choose Aslepius?</h3>
+    <h3 id="WHY"><u>Why choose Aslepius?</u></h3>
     <p id="CHOOSE"><h5>The world perceives us as a low-cost Indian healthcare service provider; what we are engaged in is a passionate journey to establish ourselves as the lowest-cost, high-quality healthcare service provider in the world.<br><br>
 At Aslepius, every aspect of your care is coordinated and teams of experts work together to provide exactly the care you need. What might take months elsewhere can often be done in days here.In aggregate, our centres provide advanced levels of care in over 15 specialties.<br>
 Our mission is to deliver high quality, affordable healthcare services to the broader population in India. Our core values are represented by the acronym "iCare", which encompasses innovation and efficiency, Compassionate care, Accountability, Respect for all, and Excellence as a culture.</h5>
@@ -205,23 +246,28 @@ Our mission is to deliver high quality, affordable healthcare services to the br
 
   </div>
   <div class="main">
-    <h2 id="NEWS">News and Media</h2>
+    <h2 id="NEWS"><u>News and Media</u></h2>
     <h5>Read More About Aslepius' Events, Programs, and Coverage in the News.
 </h5>
     <div class="box" style="height:200px;">
-        *A first in Karnataka - Joint Heart & Lung transplant performed at Aslepius.<br><br>
-        *Police Officer from Muscat with Acute Heart Failure gets a Gift of Life at Aslepius .<br><br>
-        *Awake surgery succesfully performed at Aslepius,Banglore, while patient chanted Hanuman Chalisa.<br><br>
-        *Blue Baby now pink in health.
+        <ul>
+         <li>A first in Karnataka - Joint Heart & Lung transplant performed at Aslepius.</li><br><br>
+         <li>Police Officer from Muscat with Acute Heart Failure gets a Gift of Life at Aslepius .</li><br><br>
+         <li>Awake surgery succesfully performed at Aslepius,Banglore, while patient chanted Hanuman Chalisa.</li><br><br>
+         <li>Blue Baby now pink in health.</li>
+        </ul>
     </div>
     <br>
-    <h2 id="ACC">Accrediations</h2>
+    <h2 id="ACC"><u>Accrediations</u></h2>
     <h5>We have and we will continue to succeed</h5>
-    <div class="box" style="height:200px;">*Aslepius adheres to national and international standards for healthcare;it is both NABH and JCI accredited.<br><br>
-*Aslepius was ranked in Fortune India 500, as one among the top 500 corporations in India.<br><br>
-*Aslepius was awarded under the CSR Excellence in Healthcare category at the Federation of Karnataka Chambers of Commerce & Industry (FKCCI) CSR Awards.<br><br>
-*Recipient of the Express Healthcare Excellence Award 2019 in the Best CSR Initiative category.
-</div>
+    <div class="box" style="height:200px;">
+        <ul>
+        <li>Aslepius adheres to national and international standards for healthcare;it is both NABH and JCI accredited.</li><br><br>
+        <li>Aslepius was ranked in Fortune India 500, as one among the top 500 corporations in India.</li><br><br>
+        <li>Aslepius was awarded under the CSR Excellence in Healthcare category at the Federation of Karnataka Chambers of Commerce & Industry (FKCCI) CSR Awards.</li><br><br>
+        <li>Recipient of the Express Healthcare Excellence Award 2019 in the Best CSR Initiative category.</li>
+        </ul>
+    </div>
     <p id="HELPLINE">Need assistance?<br>
 <b>Call our 24/7 HELPLINE number</b><br>
 180-4560-4560</p>

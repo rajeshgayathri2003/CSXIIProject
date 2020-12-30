@@ -3,14 +3,25 @@
 <h3 class="card-title" id="doctor">{{ object.docname }}</h3>
 <p class="card-text" id="post">{{ object.specialisation }}</p>
 <p class="card-text" id="degree">{{ object.qualification }}</p>
+<form action="#" method = "POST" >
+    {% csrf_token %}
+    <!---<label for ="docid">DOCID</label>--->
+    <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
+  <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
 <input type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%">
-
+</button>
+</form>
 {% endblock %}
 
 {% block content1 %}
 <h3 class="card-title" id="doctor">{{ object1.docname }}</h3>
 <p class="card-text" id="post">{{ object1.specialisation }}</p>
 <p class="card-text" id="degree">{{ object1.qualification }}</p>
+<form action="#" method = "POST" >
+    {% csrf_token %}
+    <!---<label for ="docid">DOCID</label>--->
+    <input type="hidden" id="docid" name="docid" value = {{object1.doctorID}}>
+  <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> 
 <input type="submit" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%">
 </button>
 </form>

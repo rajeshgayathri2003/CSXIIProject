@@ -18,6 +18,7 @@
           <p class="card-text" id="degree">MBBS,BDS, MDS - Oral Medicine and Radiology</p>
           <form action="#" method = "POST" >
             {% csrf_token %}
+            <!---<label for ="docid">DOCID</label>--->
             <input type="hidden" id="docid" name="docid" value = {{object.doctorID}}>
             <button type="submit" formaction="{% url 'bookappointment' %}" name="Book Appointment" value="Book Appointment" id="book" style="margin-left: 12%"> Book Appointment
       

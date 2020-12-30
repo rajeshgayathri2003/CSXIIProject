@@ -3,33 +3,55 @@
 <head>
   <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
 <style>
+.header img {
+  float: left;
+  width: 70px;
+  height: 70px;
+  background: #555;
+}
+
+.header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+    font-size: 2.5rem;
+    color: #fcedd8;
+    font-family: 'Niconne', cursive;
+    text-shadow: 5px 5px 0px #eb452b,
+                  10px 10px 0px #efa032,
+                  15px 15px 0px #46b59b;
+}
 .menubar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 8px;
   overflow: hidden;
-  background-color: cornflowerblue;
-
+  background-color: Aquamarine;
+  border: 2px solid blue;
 }
 .active, .menu-bar ul li:hover, .sub-menu-1:hover .dropbtn
-{background: whitesmoke;
+{background: lightskyblue;
  border-radius: 3px;}
  .sub-menu-1{display: none;}
  .sub-menu-1 a{display: block; color: black;}
- .sub-menu-1 a:hover{background:whitesmoke;}
+ .sub-menu-1 a:hover{background:lightskyblue;}
+
 
 li{float:left;}
 
 li a, .dropbtn {
   display: inline-block;
   color: black;
+  font-family: 'Niconne', cursive;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  text-shadow: 1px 1px 1px #00CED1;
+
 }
 
 li a:hover, .sub-menu-1:hover .dropbtn {
-  background-color: whitesmoke;
+  background-color: lightskyblue;
 }
 
 li.sub-menu-1 {
@@ -39,7 +61,7 @@ li.sub-menu-1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: cornflowerblue;
+  background-color: Aquamarine;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
@@ -53,7 +75,7 @@ li.sub-menu-1 {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: smokewhite;}
+.dropdown-content a:hover {background-color: lightskyblue;}
 
 .sub-menu-1:hover .dropdown-content {
   display: block;
@@ -61,31 +83,41 @@ li.sub-menu-1 {
 .profile-box
 {width: 400px;
  height: 600px;
- background-color: lightblue;
+ background-color:Aquamarine;
  padding: 30px;
  margin: 18px;
  border-radius: 25px;
- font-family: 'Alef';
+ font-family: 'Niconne', cursive;
  font-size: 14px;
+ box-shadow: 10px 10px 5px grey;
  float: left;
  }
 
  .apt-box{width: 300px;
  height: 600px;
- background-color: lightblue;
+ background-color: Aquamarine;
  padding: 30px;
  margin: 18px;
  border-radius: 25px;
- font-family: 'Alef';
+ font-family: 'Niconne', cursive;
  font-size: 14px;
- float:right;}
+ box-shadow: 10px 10px 5px grey;
+ float:right;
+ overflow: scroll;
+ }
 
 
  hr.line
  {border-top: 1px dodgerblue;}
 </style>
 </head>
-<body bgcolor="azure">
+<body bgcolor="00BFFF">
+<div class="header">
+  <img style="display: inline;" src="/static/images/hosp.png" alt="logo" />
+  <h1 style="display: inline;">Aslepius</h1>
+</div>
+
+<br><br>
 {% csrf_token %}
 <ul class="menubar">
   <li class="active"><a href="#home">HOME</a></li>
