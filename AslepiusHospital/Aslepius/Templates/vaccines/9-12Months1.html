@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>2 MONTHS</title>
+        <title>9-12 MONTHS</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
         <style>
@@ -33,14 +33,14 @@
         </style>
     </head>
     <body>
-        <h1 id="title">2 MONTHS</h1><br><br><br>
+        <h1 id="title">9-12 MONTHS</h1><br><br><br>
         <ul class="list-group">
-            <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="checkbox">   Rotavirus (First Dose)  </strong></li>
-            <li class="list-group-item list-group-item-success" id="dept"><strong><input type="checkbox">   Hib Hameophilus Influenza B (First Dose)</strong></li>
-            <li class="list-group-item list-group-item-info" id="dept"><strong><input type="checkbox">   Polio (First OPV) </strong></li>
-            <li class="list-group-item list-group-item-secondary" id="dept"><strong><input type="checkbox">   DTap/DTP/DT Diptheria, Tetanus, and Pertussis (First Dose) </strong></li>
-            <li class="list-group-item list-group-item-warning" id="dept"><strong><input type="checkbox">   Hep B Hepatitus B (Second Dose) </strong></li>
+            <form action="{%url 'get_chkbox_value' %}" method="POST"> 
+            {%csrf_token%}
+            <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="radio" name="vaccine" value="{{object.VaccineID}}">   {{object.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-success" id="dept"><strong><input type="radio" name="vaccine" value="{{object1.VaccineID}}">   {{object1.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-info" id="dept"><strong><input type="radio" name="vaccine" value="{{object2.VaccineID}}">   {{object2.Vaccine_Name}} </strong></li>
         </ul>
-        <button type="submit" value="SUBMIT" id="submit"><strong><a href="{%url 'book_appointment' %}">SUBMIT</a></strong></button>
+        <button type="submit" value="SUBMIT" id="submit"><strong>SUBMIT</strong></button></form>
     </body>
 </html>

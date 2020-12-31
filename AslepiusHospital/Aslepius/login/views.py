@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import check_password
 from appointment import models as aptmodels
 from labs import models as labs
 from dept import models as deptmodels
+from vaccines import models as vaccines
 
 
 '''This function is used to generate a random password that will 
@@ -138,7 +139,10 @@ def mypage(request):
                 details_lst = models.Register.objects.filter(email = request.user.id)
                 appointment_lst = aptmodels.Appointment.objects.filter(patientID = request.user.id)
                 labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id)
-                returndict = {'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst':labs_lst}
+                print("HI")
+                vaccines_lst = vaccines.Vaccines_payment.objects.filter(patientID=request.user.id)
+                print(vaccines_lst)
+                returndict = {'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst':labs_lst, 'v_lst': vaccines_lst}
                 return render(request, 'mypage/myhomepage.html', returndict)
 
         else:
@@ -149,7 +153,8 @@ def mypage(request):
         details_lst = models.Register.objects.filter(email= request.user.id)
         appointment_lst = aptmodels.Appointment.objects.filter(status =0, patientID = request.user.id, )
         labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id,)
-        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
+        vaccines_lst = vaccines.Vaccines_payment.objects.filter(patientID=request.user.id)
+        return render(request,'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst, 'v_lst': vaccines_lst})
 
 
 '''Upon first login the User is asked to change her password. 

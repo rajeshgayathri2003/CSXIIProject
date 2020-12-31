@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>6 MONTHS</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> 
+        <style>
+            #title{
+                text-align: center;
+                margin-top: 70px;
+                font-family: 'Bangers', cursive;
+                font-size: 50px;
+            }
+
+            #dept{
+                text-align: center;
+                padding: 25px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+
+            #submit{
+                margin-left: 700px;
+                margin-top: 80px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                font-size: 20px;
+                background-color: rgb(255, 187, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">6 MONTHS</h1><br><br><br>
+        <ul class="list-group">
+            <form action="{%url 'get_chkbox_value' %}" method="POST"> 
+            {%csrf_token%}
+            <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="radio" name="vaccine" value="{{object.VaccineID}}">   {{object.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-success" id="dept"><strong><input type="radio" name="vaccine" value="{{object1.VaccineID}}">   {{object1.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-info" id="dept"><strong><input type="radio" name="vaccine" value="{{object2.VaccineID}}">   {{object2.Vaccine_Name}} </strong></li>
+            <li class="list-group-item list-group-item-secondary" id="dept"><strong><input type="radio" name="vaccine" value="{{object3.VaccineID}}">  {{object3.Vaccine_Name}} </strong></li>
+            <li class="list-group-item list-group-item-secondary" id="dept"><strong><input type="radio" name="vaccine" value="{{object4.VaccineID}}">  {{object4.Vaccine_Name}} </strong></li>
+            
+        </ul>
+        <button type="submit" value="SUBMIT" id="submit"><strong>SUBMIT</strong></button> </form>
+    </body>
+</html>

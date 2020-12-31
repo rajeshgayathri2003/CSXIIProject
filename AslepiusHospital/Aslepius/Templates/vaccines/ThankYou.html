@@ -11,6 +11,12 @@
                 font-size: 100px;
             }
 
+            #heading2{
+                text-align: center;
+                font-family: 'Bangers', cursive;
+                font-size: 50px;
+            }
+
             #link{
                 margin-left: 475px;
                 text-align: center;
@@ -38,8 +44,7 @@
     </head>
     <body>
         <h1 id="heading">THANK YOU!!</h1>
-        <button type="submit" value="go back" id="link"><h2> <a href="{% url 'vaccines' %}">CLICK HERE TO GO BACK TO VACCINES!</a></h2></button>
-        <h2 id="or">OR</h2>
-        <button type="submit" value="finish" id="link2"><h2> <a href="{% url 'vaccines' %}">CLICK HERE TO FINISH!</a></h2></button>
+        <h1 id="heading2"> We have sent you a confirmation mail!</h1>
+        <h1 id="heading2"> Click <a href="{% url 'mypage' %}"> HERE </a> to go back to the home page</h1>
     </body>
 </html>

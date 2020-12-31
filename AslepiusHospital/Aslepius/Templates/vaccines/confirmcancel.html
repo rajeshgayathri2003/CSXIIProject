@@ -1,0 +1,53 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Thankyou</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+    <style>
+        #mssg{font-family:Raleway;
+              font-size:50px;
+        }
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        .button{
+            background-color: blueviolet;
+            text-align: center;
+            color: whitesmoke;
+            padding: 12px 28px;
+            border: none;
+            margin: 4px 2px;
+            font-size: 16px;
+            border-radius: 25px;
+
+
+        }
+
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <center>
+        <p id="mssg">Are you sure you want to cancel the test?
+        </p>
+        {% for b in bookingID %}
+        <form method="POST" action="{% url 'Vaccine_cancel' %}">
+            {% csrf_token %}
+            <input name ="choice" type="hidden" value="YES">
+            <input name = "bookingID" type ="hidden" value= {{b.bookingID}}>
+            <button class="button" type="submit">YES</button>
+          </form>
+        {% endfor %}
+          <form method="GET" action="{% url 'mypage' %}">
+            {% csrf_token %}
+            <input name ="choice" type="hidden" value="NO">
+            <button class="button" type="submit">NO</button>
+          </form>
+    </center>
+
+</body>
+</html>
