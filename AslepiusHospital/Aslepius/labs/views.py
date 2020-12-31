@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from login import models as loginmodels
 from appointment import models as aptmodels
 from django.contrib import messages
+from vaccines.models import Vaccines_payment
 # Create your views here.
 
 def tests(request):
@@ -180,7 +181,8 @@ def payment(request):
             details_lst = loginmodels.Register.objects.filter(email=request.user.id)
             appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
             labs_lst = Labs_payment.objects.filter(patientID=request.user.id, )
-            return render(request, 'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst})
+            vaccines_lst = Vaccines_payment.objects.filter(patientID=request.user.id, )
+            return render(request, 'mypage/myhomepage.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst, 'v_lst': vaccines_lst})
         except:
             messages.info(request,'Payment unsuccessful. Please try again later')
             return redirect('tests')
