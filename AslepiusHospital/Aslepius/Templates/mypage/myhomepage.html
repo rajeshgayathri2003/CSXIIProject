@@ -179,6 +179,23 @@ li.sub-menu-1 {
   
 
   </div>
+
+  <div class="apt-box"> <P  id ="apt" style="color: white;">
+    <h3>Vaccines</h3>
+    {% for v in v_lst %}
+    <div>{{v.Vaccinename}}</div>
+    <form method="POST" action="{% url 'Vaccine_confirm' %}">
+      {% csrf_token %}
+      <input name ="bookingID" type="hidden" value={{v.bookingID}}>
+      <button type="submit">Cancel</button>
+    </form>
+
+    <hr class="line">
+    {% endfor %}
+  
+  </P>
+  </div>
+  
   <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h2>Appointments</h2>
     {% if a_lst %}

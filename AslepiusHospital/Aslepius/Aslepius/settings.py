@@ -73,15 +73,15 @@ WSGI_APPLICATION = 'Aslepius.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'GAYATHRI',
-        'USER': 'root',
-        'PASSWORD': 'G@Y@3rajesh',
-        'HOST': 'localhost',
-    }
- }
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'GAYATHRI',
+#         'USER': 'root',
+#         'PASSWORD': 'G@Y@3rajesh',
+#         'HOST': 'localhost',
+#     }
+#  }
 
 
 # Password validation
@@ -134,8 +134,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
-'''DATABASES = {'default': {
+DATABASES = {'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}'''
+}
