@@ -52,11 +52,11 @@
 
         <div><p id="desc"><label>Date:</label><br /><input type="date" name='aptdate' min="2020-09-12" required /></p></div>
         <div><p id="desc"><label id="Time">Time:</label><br />
-            <label >{{time.timeslot1}}</label><input name="Time" value = {{time.timeslot1}} type="radio"/>
-            <label >{{time.timeslot2}}</label><input name="Time" value = {{time.timeslot2}}  type="radio"/>
-            <label >{{time.timeslot3}}</label><input name="Time" value = {{time.timeslot3}} type="radio"/>
-            <label >{{time.timeslot4}}</label><input name="Time" value = {{time.timeslot4}} type="radio"/>
-            <label>{{time.timeslot5}}</label><input name="Time" value= {{time.timeslot5}} type="radio"/>
+            <input name="Time" value = {{time.timeslot1}} type="radio"/><label >{{time.timeslot1}}</label>
+            <input name="Time" value = {{time.timeslot2}}  type="radio"/><label >{{time.timeslot2}}</label>
+            <input name="Time" value = {{time.timeslot3}} type="radio"/><label >{{time.timeslot3}}</label>
+           <input name="Time" value = {{time.timeslot4}} type="radio"/> <label >{{time.timeslot4}}</label>
+            <input name="Time" value= {{time.timeslot5}} type="radio"/><label>{{time.timeslot5}}</label>
         </p></div>
         <div><p id="desc"><label>Purpose of visit:</label><br /><input type="text" required /></p></div>
         <center><button formaction ="{% url 'booknow' %}" id="desc" type="submit">BOOK NOW</button></center>
