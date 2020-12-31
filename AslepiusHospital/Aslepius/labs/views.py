@@ -176,7 +176,7 @@ def payment(request):
             R.cvv= cvv
             R.save()
             body = 'Dear {0},\nYour {1} test has been succsessfully booked\n Regards,\nTeam Aselpius'.format(fname, testname)
-            send_mail('Diagnostic test payed', body,
+            send_mail('Diagnostic test paid', body,
                   'aslepius9@gmail.com', [request.user.email, ], fail_silently=False)
             details_lst = loginmodels.Register.objects.filter(email=request.user.id)
             appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
