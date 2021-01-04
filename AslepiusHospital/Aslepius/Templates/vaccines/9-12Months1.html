@@ -34,6 +34,7 @@
     <body>
         <h1 id="title">9-12 MONTHS</h1><br><br><br>
         <ul class="list-group">
+            {% if user.is_authenticated %}
             <form action="{%url 'get_chkbox_value' %}" method="POST"> 
             {%csrf_token%}
             <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="radio" name="vaccine" value="{{object.VaccineID}}">   {{object.Vaccine_Name}}  </strong></li>
@@ -41,5 +42,14 @@
             <li class="list-group-item list-group-item-info" id="dept"><strong><input type="radio" name="vaccine" value="{{object2.VaccineID}}">   {{object2.Vaccine_Name}} </strong></li>
         </ul>
         <center><button type="submit" value="SUBMIT" id="submit"><strong>SUBMIT</strong></button></form></center>
+        {%else%}
+        <form action="login" method="GET"> 
+            {%csrf_token%}
+            <li class="list-group-item list-group-item-danger" id="dept"><strong><input type="radio" name="vaccine" value="{{object.VaccineID}}">   {{object.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-success" id="dept"><strong><input type="radio" name="vaccine" value="{{object1.VaccineID}}">   {{object1.Vaccine_Name}}  </strong></li>
+            <li class="list-group-item list-group-item-info" id="dept"><strong><input type="radio" name="vaccine" value="{{object2.VaccineID}}">   {{object2.Vaccine_Name}} </strong></li>
+        </ul>
+        <center><button type="submit" value="SUBMIT" id="submit"><strong>SUBMIT</strong></button></form></center>
+        {%endif%}
     </body>
 </html>
