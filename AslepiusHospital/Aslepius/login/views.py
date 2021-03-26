@@ -205,6 +205,6 @@ def forgotpassword(request):
             body,'aslepius9@gmail.com',
             [useremail],
             fail_silently= False)
-            messages.info(request,'Please check your registered email address')
+            messages.info(request,'Please check your registered email address for the new password')
         return render(request,'login/login.html')
 # Create your views here.

@@ -182,6 +182,7 @@ li.sub-menu-1 {
 
   <div class="apt-box"> <P  id ="apt" style="color: white;">
     <h3>Vaccines</h3>
+    {% if v_lst %}
     {% for v in v_lst %}
     <div>{{v.Vaccinename}}</div>
     <form method="POST" action="{% url 'Vaccine_confirm' %}">
@@ -192,7 +193,9 @@ li.sub-menu-1 {
 
     <hr class="line">
     {% endfor %}
-  
+    {% else %}
+    <P>No Vaccines Booked</P>
+    {% endif %}
   </P>
   </div>
   

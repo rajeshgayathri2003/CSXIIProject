@@ -5,7 +5,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="Thyroid" formaction="booking" value="Book Now" id="book" style="margin-left: 12%"/>
 {% else %}
-<input type="submit" name="Thyroid" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="Thyroid" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -15,7 +15,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VIT D & B12" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VIT D & B12" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VIT D & B12" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VITAL CARE VITAMIN AND MINERAL CARE" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VITAL CARE VITAMIN AND MINERAL CARE" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VITAL CARE VITAMIN AND MINERAL CARE" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -35,7 +35,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VITAL BONE CARE" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VITAL BONE CARE" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VITAL BONE CARE" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -45,7 +45,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="LIVER FUNCTION CARE" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="LIVER FUNCTION CARE" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="LIVER FUNCTION CARE" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -55,7 +55,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="LIVER AND KIDNEY PROFILE" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="LIVER AND KIDNEY PROFILE" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="LIVER AND KIDNEY PROFILE" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -65,7 +65,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="OSTEOSCREEN PANEL" formaction="booking"  value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="OSTEOSCREEN PANEL" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="OSTEOSCREEN PANEL" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -75,7 +75,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="Thyro SCREEN PANEL" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="Thyro SCREEN PANEL"  formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="Thyro SCREEN PANEL"  formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -85,7 +85,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VITAL CARE DIABETES" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VITAL CARE DIABETES" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VITAL CARE DIABETES" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -95,7 +95,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VITAL CARE HEART" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VITAL CARE HEART" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VITAL CARE HEART" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -105,7 +105,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="LIPID SCREEN" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="LIPID SCREEN" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="LIPID SCREEN" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -115,7 +115,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="HYPERTENSION PROFILE" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="HYPERTENSION PROFILE" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="HYPERTENSION PROFILE" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -125,7 +125,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="GLUCOSE FASTING" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="GLUCOSE FASTING" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="GLUCOSE FASTING" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -135,7 +135,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="COMPLETE BLOOD COUNT" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="COMPLETE BLOOD COUNT" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="COMPLETE BLOOD COUNT" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -145,7 +145,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="COMPLETE URINE EXAM" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="COMPLETE URINE EXAM" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="COMPLETE URINE EXAM" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -156,7 +156,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="BILIRUBIN TOTAL" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="BILIRUBIN TOTAL" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="BILIRUBIN TOTAL" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -166,7 +166,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="HOMOCYSTEIN SERUM" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="HOMOCYSTEIN SERUM" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="HOMOCYSTEIN SERUM" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -176,7 +176,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="FREE T3 & T4" formaction="booking"formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="FREE T3 & T4" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="FREE T3 & T4" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -186,7 +186,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="ULTRASONOGRAPHY" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name=ULTRASONOGRAPHY"formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name=ULTRASONOGRAPHY" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -196,7 +196,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="HEMOGLOBIN A1C" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="HEMOGLOBIN A1C" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="HEMOGLOBIN A1C" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -206,7 +206,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="VITAL CARE ANEMIA " formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="VITAL CARE ANEMIA " formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="VITAL CARE ANEMIA " formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -216,7 +216,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="CALCIUM SERUM" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="CALCIUM SERUM" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="CALCIUM SERUM" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -226,7 +226,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="ALLERGY SCREENING" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="ALLERGY SCREENING" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="ALLERGY SCREENING" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -236,7 +236,7 @@
 {% if user.is_authenticated %}
 <input type="submit" name="MASTER CHECK DIAMOND " formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="MASTER CHECK DIAMOND " formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="MASTER CHECK DIAMOND " formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}
 
@@ -247,6 +247,6 @@
 {% if user.is_authenticated %}
 <input type="submit" name="MASTER CHECK GOLD" formaction="booking" value="Book Now" id="book" style="margin-left: 12%">
 {% else %}
-<input type="submit" name="MASTER CHECK GOLD" formaction="login" value="Book Now" id="book" style="margin-left: 12%"/>
+<input type="submit" name="MASTER CHECK GOLD" formaction="{%url 'login' %}" value="Book Now" id="book" style="margin-left: 12%"/>
 {% endif %}
 {% endblock %}

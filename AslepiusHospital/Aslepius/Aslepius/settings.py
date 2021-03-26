@@ -25,6 +25,7 @@ SECRET_KEY = 'rx_u1ik2uy-d@7uyzc0!&31d#0)@8*am78kv(scutya0t6z@=j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = ['192.168.1.9',  '127.0.0.1']
 ALLOWED_HOSTS = []
 
 

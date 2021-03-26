@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from vaccines.models import Vaccines, Availability, Vaccines_payment
 from dept import views as deptviews
 from dept.models import Departments
@@ -284,43 +284,47 @@ def get_chkbox_value(request):
 
 
 def Payment(request):
-    if request.method == "POST":
-        fname = request.POST['firstname']
-        email = request.POST['email']
-        add = request.POST['address']
-        city = request.POST['city']
-        Vaccinename = request.POST.get('Vaccinename')
-        price = request.POST['price']
-        state = request.POST['state']
-        pincode = request.POST['Pincode']
-        cardname = request.POST['cardname']
-        creditcard_num = request.POST['cardnumber']
-        expiry_month = request.POST['expmonth']
-        expiry_year = request.POST['expyear']
-        cvv = request.POST['cvv']
-        R = Vaccines_payment()
-        R.patientID = request.user
-        R.fname=fname
-        R.Add=add
-        R.city=city
-        R.Vaccinename=Vaccinename
-        R.price=price
-        R.state=state
-        R.pincode=pincode
-        R.cardname=cardname
-        R.cardnumber=creditcard_num
-        R.exp_month=expiry_month
-        R.exp_year=expiry_year
-        R.cvv= cvv
-        R.save()
-        body = 'Dear {0},\nYour appointment for the {1} vaccine has been confirmed \n Please be on time.\n Regards,\nTeam Aselpius'.format(fname, Vaccinename )
-        send_mail('Appointment Confirmation', body,
-                  'aslepius9@gmail.com', [request.user.email, ], fail_silently=False)
-        details_lst = loginmodels.Register.objects.filter(email=request.user.id)
-        appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
-        labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id)
-        vaccines_lst = Vaccines_payment.objects.filter(patientID=request.user.id, )
-        return render(request, 'vaccines/ThankYou.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst, 'v_lst': vaccines_lst})
+    try:
+        if request.method == "POST":
+            fname = request.POST['firstname']
+            email = request.POST['email']
+            add = request.POST['address']
+            city = request.POST['city']
+            Vaccinename = request.POST.get('Vaccinename')
+            price = request.POST['price']
+            state = request.POST['state']
+            pincode = request.POST['Pincode']
+            cardname = request.POST['cardname']
+            creditcard_num = request.POST['cardnumber']
+            expiry_month = request.POST['expmonth']
+            expiry_year = request.POST['expyear']
+            cvv = request.POST['cvv']
+            R = Vaccines_payment()
+            R.patientID = request.user
+            R.fname=fname
+            R.Add=add
+            R.city=city
+            R.Vaccinename=Vaccinename
+            R.price=price
+            R.state=state
+            R.pincode=pincode
+            R.cardname=cardname
+            R.cardnumber=creditcard_num
+            R.exp_month=expiry_month
+            R.exp_year=expiry_year
+            R.cvv= cvv
+            R.save()
+            body = 'Dear {0},\nYour appointment for the {1} vaccine has been confirmed \n Please be on time.\n Regards,\nTeam Aselpius'.format(fname, Vaccinename )
+            send_mail('Appointment Confirmation', body,
+                    'aslepius9@gmail.com', [request.user.email, ], fail_silently=False)
+            details_lst = loginmodels.Register.objects.filter(email=request.user.id)
+            appointment_lst = aptmodels.Appointment.objects.filter(status=0, patientID=request.user.id, )
+            labs_lst = labs.Labs_payment.objects.filter(patientID=request.user.id)
+            vaccines_lst = Vaccines_payment.objects.filter(patientID=request.user.id, )
+            return render(request, 'vaccines/ThankYou.html',{'d_lst': details_lst, 'a_lst': appointment_lst, 'l_lst': labs_lst, 'v_lst': vaccines_lst})
+    except:
+            messages.info(request,'Payment unsuccessful. Please try again later')
+            return redirect('vaccines')
 
 
 def Vaccine_confirm(request):
